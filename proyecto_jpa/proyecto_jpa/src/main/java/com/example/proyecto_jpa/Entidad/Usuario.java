@@ -32,7 +32,7 @@ public class Usuario {
     private String img_perfil;
 
     @Column(nullable = false)
-    private String Estado_Cu;
+    private String Estado_Cuenta;
 
 
     @OneToMany(mappedBy = "usuario_rel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -51,7 +51,7 @@ public class Usuario {
         FechaN = fechaN;
         Cod_verif = cod_verif;
         this.img_perfil = img_perfil;
-        Estado_Cu = estado_Cu;
+        Estado_Cuenta = estado_Cu;
     }
 
     public Usuario() {
@@ -114,11 +114,11 @@ public class Usuario {
     }
 
     public String getEstado_Cu() {
-        return Estado_Cu;
+        return Estado_Cuenta;
     }
 
     public void setEstado_Cu(String estado_Cu) {
-        Estado_Cu = estado_Cu;
+        Estado_Cuenta = estado_Cu;
     }
 
 
@@ -133,7 +133,7 @@ public class Usuario {
                 ", FechaN='" + FechaN + '\'' +
                 ", Cod_verif='" + Cod_verif + '\'' +
                 ", img_perfil='" + img_perfil + '\'' +
-                ", Estado_Cu='" + Estado_Cu + '\'' +
+                ", Estado_Cu='" + Estado_Cuenta + '\'' +
                 '}';
     }
 }
