@@ -1,22 +1,20 @@
 package jpaledemotionspower.proyecto_jpa.Entidad;
-
-
 import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "Usuarios")
 public class Usuario {
 
     @Id
     @Column(unique = true)
-    private String Id_usuario;
+    private String IdUsuario;
 
     @Column(nullable = false)
     private String Nombres;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String Email;
 
     @Column(nullable = false)
@@ -25,44 +23,44 @@ public class Usuario {
     @Column(nullable = false)
     private String FechaN;
 
-    @Column(name = "Cod_verif")
-    private String Cod_verif;
+    @Column(name = "CodVerif")
+    private String CodVerif;
 
-    @Column(name = "img_perfil")
-    private String img_perfil;
+    @Column(name = "imgPerfil")
+    private String imgPerfil;
 
     @Column(nullable = false)
-    private String Estado_Cuenta;
+    private String EstadoCuenta;
 
 
-    @OneToMany(mappedBy = "usuario_rel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario_rel", fetch = FetchType.LAZY)
     private Set<Comprobante> comprobante_rel;
 
 
-    @OneToMany(mappedBy = "usuario_rel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario_rel", fetch = FetchType.LAZY)
     private Set<SesionTerapia> sesionTerapias_rel;
 
 
     public Usuario(String id_usuario, String nombres, String email, String contraseña, String fechaN, String cod_verif, String img_perfil, String estado_Cu) {
-        Id_usuario = id_usuario;
+        IdUsuario = id_usuario;
         Nombres = nombres;
         Email = email;
         Contraseña = contraseña;
         FechaN = fechaN;
-        Cod_verif = cod_verif;
-        this.img_perfil = img_perfil;
-        Estado_Cuenta = estado_Cu;
+        CodVerif = cod_verif;
+        imgPerfil = img_perfil;
+        EstadoCuenta = estado_Cu;
     }
 
     public Usuario() {
     }
 
-    public String getId_usuario() {
-        return Id_usuario;
+    public String getIdUsuario() {
+        return IdUsuario;
     }
 
-    public void setId_usuario(String id_usuario) {
-        Id_usuario = id_usuario;
+    public void setIdUsuario(String idUsuario) {
+        IdUsuario = idUsuario;
     }
 
     public String getNombres() {
@@ -97,43 +95,57 @@ public class Usuario {
         FechaN = fechaN;
     }
 
-    public String getCod_verif() {
-        return Cod_verif;
+    public String getCodVerif() {
+        return CodVerif;
     }
 
-    public void setCod_verif(String cod_verif) {
-        Cod_verif = cod_verif;
+    public void setCodVerif(String codVerif) {
+        CodVerif = codVerif;
     }
 
-    public String getImg_perfil() {
-        return img_perfil;
+    public String getImgPerfil() {
+        return imgPerfil;
     }
 
-    public void setImg_perfil(String img_perfil) {
-        this.img_perfil = img_perfil;
+    public void setImgPerfil(String imgPerfil) {
+        this.imgPerfil = imgPerfil;
     }
 
-    public String getEstado_Cu() {
-        return Estado_Cuenta;
+    public String getEstadoCuenta() {
+        return EstadoCuenta;
     }
 
-    public void setEstado_Cu(String estado_Cu) {
-        Estado_Cuenta = estado_Cu;
+    public void setEstadoCuenta(String estadoCuenta) {
+        EstadoCuenta = estadoCuenta;
     }
 
+    public Set<Comprobante> getComprobante_rel() {
+        return comprobante_rel;
+    }
 
+    public void setComprobante_rel(Set<Comprobante> comprobante_rel) {
+        this.comprobante_rel = comprobante_rel;
+    }
+
+    public Set<SesionTerapia> getSesionTerapias_rel() {
+        return sesionTerapias_rel;
+    }
+
+    public void setSesionTerapias_rel(Set<SesionTerapia> sesionTerapias_rel) {
+        this.sesionTerapias_rel = sesionTerapias_rel;
+    }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "Id_usuario='" + Id_usuario + '\'' +
+                "IdUsuario='" + IdUsuario + '\'' +
                 ", Nombres='" + Nombres + '\'' +
                 ", Email='" + Email + '\'' +
                 ", Contraseña='" + Contraseña + '\'' +
                 ", FechaN='" + FechaN + '\'' +
-                ", Cod_verif='" + Cod_verif + '\'' +
-                ", img_perfil='" + img_perfil + '\'' +
-                ", Estado_Cu='" + Estado_Cuenta + '\'' +
+                ", CodVerif='" + CodVerif + '\'' +
+                ", imgPerfil='" + imgPerfil + '\'' +
+                ", EstadoCuenta='" + EstadoCuenta + '\'' +
                 '}';
     }
 }
