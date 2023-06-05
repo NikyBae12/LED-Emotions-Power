@@ -1,7 +1,104 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
-*:focus {
-  outline: none;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
 }
+
+:root{
+  --purpura_pastel: #6d50e1;
+}
+
+header{
+  width: 100%;
+  height: 100px;
+  position: relative;
+  z-index: 100;
+}
+
+.contenedor__header{
+  width: 1400px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logo img{
+  width: 200px;
+
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+
+}
+
+.menu nav{
+  margin: 0px 20px;
+}
+
+.menu nav ul{
+  display: flex;
+}
+
+.menu nav ul li{
+  list-style: none;
+  margin: 20px 16px;
+}
+
+
+.menu nav ul li a{
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  position: relative;
+}
+
+
+.menu nav ul li a:hover{
+  color: var(--purpura_pastel);
+}
+
+
+.btn_inicio{
+  display: block;
+  padding: 8px 40px;
+  border: 2px solid var(--purpura_pastel);
+  border-radius: 8px;
+  font-weight: 500;
+  margin: 0px 20px;
+}
+
+.btn_inicio:hover{
+  color: rgb(255, 255, 255);
+  background: var(--purpura_pastel);
+}
+
+
+.menu .redSocial{
+  margin: 0px 10px;
+}
+
+.menu .redSocial a{
+  margin: 0px 5px;
+}
+
+.menu .redSocial img{
+  width: 25px;
+}
+
 
 body {
   margin: 0;
@@ -12,6 +109,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
+
+
 
 
 

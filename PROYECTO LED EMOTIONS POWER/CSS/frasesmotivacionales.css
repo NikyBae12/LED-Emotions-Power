@@ -12,11 +12,10 @@ body{
     margin-left: 80px;
     margin-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    
 }
 
 main{
-    padding: 10px;
+    padding: 20px;
 }
 
 
@@ -159,6 +158,8 @@ header{
 
 
 
+/*MENU DESPLEGABLE*/
+
 .icon__menu{
     width: 50px;
     height: 200%;
@@ -267,10 +268,68 @@ a.selected{
 
 
 
-/*nosotros*/
+/*CAJITAS DE MENSAJES MOTIVACIONALES*/
 
 
+.cajitas__mensaje {
+    display: flex;
+    flex-direction:row;
+    padding-left:150px;
+    padding-bottom: 25px;
+    gap: 35px;
+  }
+.mensajito {
+    width: 290px;
+    height: 140px;
+    background-color: #8561e938;
+    text-align: center;
+    border: 10px solid #8561e938;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff;
+    transition: 0.5s;
+  }
+  
+  .mensajito:hover {
+    height: 254px;
+  }
+  
+  .icons {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    background-color: #eee;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 8px 8px 10px #ddd, -8px -8px 10px #fff;
+  }
 
+  .icons img{
+    width: 70px;
+
+}
+  
+  .mensaje {
+    color: #020202;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 10px #ddd, -8px -8px 10px #fff;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+  }
+  
+  .mensajito:hover .mensaje {
+    transform: translateY(0) scale(1)
+  }
+  
+  .mensaje h3 {
+    text-shadow: 2px 2px 0px #fff;
+  }
+
+
+ 
 
 
 /*Clases para usar en JavaScript*/

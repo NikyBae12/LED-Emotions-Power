@@ -12,11 +12,10 @@ body{
     margin-left: 80px;
     margin-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    
 }
 
 main{
-    padding: 10px;
+    padding: 20px;
 }
 
 
@@ -40,7 +39,7 @@ header{
     align-items: center;
     position: relative;
     z-index: 1;
-    padding-right: 300px;
+    padding-right: 200px;
     padding-left: 20px;
 
 }
@@ -142,22 +141,42 @@ header{
 
 /*BOTON CERRAR SEION*/
 .btn_inicio{
-    padding-left: 100px;
-    display: block;
-    padding: 8px 40px;
-    border: 2px solid var(--purpura_pastel);
-    border-radius: 8px;
-    font-weight: 500;
-    margin: 0px 20px;
-    
+  padding-left: 10px;
+  display: block;
+  padding: 8px 20px;
+  border: 2px solid var(--purpura_pastel);
+  border-radius: 8px;
+  font-weight: 500;
+  margin: 0px 20px;
+  
 }
 
 .btn_inicio:hover{
-        color: rgb(255, 255, 255);
-    background: var(--purpura_pastel);
+      color: rgb(255, 255, 255);
+  background: var(--purpura_pastel);
 }
 
 
+/*BOTON GESTIONAR MULTIMEDIA*/
+.btn_gestionar{
+  padding-left: 10px;
+  display: block;
+  padding: 8px 20px;
+  border: 2px solid var(--purpura_pastel);
+  border-radius: 8px;
+  font-weight: 500;
+  margin: 0px 20px;
+  
+}
+
+.btn_gestionar:hover{
+      color: rgb(255, 255, 255);
+  background: var(--purpura_pastel);
+}
+
+
+
+/*MENU DESPLEGABLE*/
 
 .icon__menu{
     width: 50px;
@@ -265,12 +284,146 @@ a.selected{
 }
 
 
+/*CARDS UNO*/
+
+.cards {
+    display: flex;
+    flex-direction:row;
+    gap: 15px;
+    padding-left:100px;
+    padding-bottom: 25px;
+  }
+  
+  .cards .azul {
+    background-color: rgba(0, 132, 255, 0.082);
+  }
+  
+  .cards .amarrillo {
+    background-color: #f6f33b44;
+  }
+
+  
+  .cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 250px;
+    width: 480px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: 400ms;
+  }
+  
+  .cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  .cards .card p.second-text {
+    font-size: .9em;
+  }
+  
+  .cards .card:hover {
+    transform: scale(1.1, 1.1);
+  }
+  
+  .cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+  }
+
+  .felicidad img{
+    width: 120px;
+    height: auto;
+    z-index: 1;
+    padding-left: 10px;
+    padding-top: px;
+
+}
 
 
-/*nosotros*/
+.microfono img{
+    width: 160px;
+    height: auto;
+    z-index: 1;
+    padding-left: 10px;
+
+}
 
 
+.videos img{
+    width: 290px;
+    height: auto;
+    z-index: 1;
+    padding-left: 10px;
 
+}
+
+
+.musica img{
+    width: 160px;
+    height: auto;
+    z-index: 1;
+    padding-left: 10px;
+    padding-top: px;
+
+}
+/*CARDS DOS*/
+
+
+.cardsd {
+    display: flex;
+    flex-direction:row;
+    padding-left:100px;
+    gap: 15px;
+  }
+  
+  
+  .cardsd .rosa {
+    background-color: #954d9b2a;
+  }
+
+
+    
+  .cardsd .gris {
+    background-color: #9191912a;
+  }
+  
+  
+  .cardsd .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 270px;
+    width: 480px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: 400ms;
+  }
+  
+  .cardsd .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  .cardsd .card p.second-text {
+    font-size: .7em;
+  }
+  
+  .cardsd .card:hover {
+    transform: scale(1.1, 1.1);
+  }
+  
+  .cardsd:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+  }
 
 
 /*Clases para usar en JavaScript*/

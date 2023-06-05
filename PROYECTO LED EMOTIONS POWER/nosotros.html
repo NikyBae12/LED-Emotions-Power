@@ -4,129 +4,107 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/nosotros.css">
-    <title>¿QUIENES SOMOS?</title>
-    
+    <title>Nosotros</title>
+
+    <link rel="stylesheet" href="css/nosotros.css">
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
+<body id="body">
+    
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+
+        <div class="logo">
+            <a href="#">
+                <img src="img/nameb.jpg" alt="">
+            </a>
+        </div>
 
 
+        <div class="menu">
 
-<body>
-	
-	<header id="main-header">
-		
-		<a id="logo-header" href="pantallaprincipal.html">
-			<span class="site-name">FranciscoAMK</span>
-			<span class="site-desc">Diseño web / WordPress / Tutoriales</span>
-		</a> <!-- / #logo-header -->
-
-		<nav>
-			<ul>
-				<li><a href="#">¿QUIENES SOMOS?</a></li>
-				<li><a href="iniciar.html">LOGIN</a></li>
-				<li><a href="registrar.html">REGISTRAR</a></li>
-				
-
-			</ul>
-		</nav><!-- / nav -->
-
-	</header><!-- / #main-header -->
-
-	
-	<section id="main-content">
-		<article>
-			<header>
-				<h1>¿QUIENES SOMOS?</h1>
-			
-                <img src="IMG/pregunta.png" alt="pregunta" />
-                
-                <div class="content">
-                    <p>
-                        LED: Emotions Power es una
-                        idea que nace con el fin de
-                        ayudar a las personas,
-                        siendo un auxilio emocional
-                        por medio de nuestra ayuda
-                        virtual, para brindarles
-                        herramientas estratégicas
-                        que aportarán alivio y
-                        tranquilidad a su vida,
-                        llegando a ser su mejor
-                        versión y contribuyendo al
-                        manejo de sus emociones.
-                    </p>
+            
+            <div class="box">
+                <div class="container-1">
+                    <span class="icon"><i class="fa fa-search"></i></span>
+                    <input type="search" id="search" placeholder="Search..." />
                 </div>
+              </div>
 
-            </header>
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
+            <a href="iniciar.html" class="btn_inicio">Cerrar Sesión</a>
+            
 
+            
+        </div>
 
-    <section id="main-content">
-		<article>
-			<header>
-				<h1>VALORES CORPORATIVOS</h1>
-			
-                <div class="servicios">
-                    <section class="servicio"><!-- creamos la clase servicio para insertar el color azul -->
-                        <p>Nuestra red de distribución garantiza siempre el cumplimiento de los plazos exigidos por nuestros clientes.</p>
+    </header>
 
-                      <br>
-                      <div class="icono"><!-- clase que utilizaremos para centrar los iconos con flexbox-->
-                       <img class="circular" src="IMG/confianza.png" width="130" height="80">
-                       </svg> <!-- palette-->
-                     </div>
-                     <h3>Confiables</h3>
-                      </section>
-                 
-             
-             
-                      
-             
-                   <section class="servicio">
-                    <p>Distribuimos productos de calidades contrastadas, siempre pensando en la demanda del mercado y de nuestros clientes. </p> 
+    <div class="menu__side" id="menu_side">
 
-                     <br>
-                     <div class="icono">
-                       <img class="circular" src="IMG/unido.png" width="130" height="40">  
-                     </div>
-                <h3>Unidos</h3>
+        <div class="name__page">
+            <i class="fab fa-youtube"></i>
+            <h4>LED EMOTIONS POWER</h4>
+        </div>
 
-                 </section>
-                 
-                 <section class="servicio">
-                    <p>La relación con nuestros clientes va más allá de la relación cliente-proveedor. Queremos acompañarte en tu negocio y ser parte de él.</p> 
-                    <br>
-                 <div class="icono">
-                   <img class="circular" src="IMG/RECURSIVO.png" width="150" height="20">
-                   </div>
-                   <h3>Recursivos</h3>
+        <div class="options__menu">	
 
-                 </section>
+            <a href="#" class="selected">
+                <div class="option">
+                    <i class="fas fa-home" title="Inicio"></i>
+                    <h4>Inicio</h4>
+                </div>
+            </a>
 
-                 <section class="servicio">
-                    <p>La relación con nuestros clientes va más allá de la relación cliente-proveedor. Queremos acompañarte en tu negocio y ser parte de él.</p> 
-                    <br>
-                 <div class="icono">
-                   <img class="circular" src="IMG/compromiso.png" width="150" height="20">
-                   </div>
-                   <h3>Comprometidos</h3>
+            <a href="multimedia.html">
+                <div class="option">
+                    <i class="far fa-file" title="Multimedia"></i>
+                    <h4>Multimedia</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-video" title="Terapia"></i>
+                    <h4>Sesiónn Terapia</h4>
+                </div>
+            </a>
 
-                 </section>
-               </div>
-             </div>
-            </header>
-		</article> <!-- /article -->
-	
-	</section> <!-- / #main-content -->
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-sticky-note" title="Blog"></i>
+                    <h4>Blog</h4>
+                </div>
+            </a>
 
-	
-	
-	<footer id="main-footer">
-		<p>&copy; 2022<a href="http://franciscoamk.com">LED EMOTIONS POWER</a></p>
-	</footer> <!-- / #main-footer -->
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-id-badge" title="Contacto"></i>
+                    <h4>Contacto</h4>
+                </div>
+            </a>
 
-	
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-address-card" title="Nosotros"></i>
+                    <h4>Nosotros</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    
+
+    <main>
+       
+
+    </main>
+
+      
+    <script src="scrip.js"></script>
 </body>
 </html>

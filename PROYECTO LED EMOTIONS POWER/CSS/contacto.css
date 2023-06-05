@@ -1,62 +1,109 @@
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 *{
     margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
-:focus{
-    outline: none;
+:root{
+    --purpura_pastel: #6d50e1;
 }
 
-body{
-    background: #DBDBDB;
-    font-family: 'Open sans';
+header{
+    width: 100%;
+    height: 100px;
+    position:relative;
+    z-index: 100;
+}
+
+.contenedor__header{
+    width: 1400px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.logo img{
+    width: 200px;
+
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+
+}
+
+.menu nav{
+    margin: 0px 20px;
+}
+
+.menu nav ul{
+    display: flex;
+}
+
+.menu nav ul li{
+    list-style: none;
+    margin: 20px 16px;
 }
 
 
-
-/* HEADER*/
-
-#main-header {
-    background: linear-gradient(to right, #50b5f0  30%, #ccc3ee,  #eec3ea  );  
-	color: white;
-	height: 80px;
-}	
-	#main-header a {
-		color: rgb(2, 2, 2);
-	}
-
-/*LOGO*/
-#logo-header {
-	float: left;
-	padding: 15px 0 0 20px;
-	text-decoration: none;
+.menu nav ul li a{
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    position: relative;
 }
-	#logo-header:hover {
-		color: #296064;
-	}
-	
-	#logo-header .site-name {
-		display: block;
-		font-weight: 700;
-		font-size: 1.2em;
-	}
-	
-	#logo-header .site-desc {
-		display: block;
-		font-weight: 300;
-		font-size: 0.8em;
-		color: #999;
-	}
-	
+
+
+.menu nav ul li a:hover{
+    color: var(--purpura_pastel);
+}
+
+
+.btn_inicio{
+    display: block;
+    padding: 8px 40px;
+    border: 2px solid var(--purpura_pastel);
+    border-radius: 8px;
+    font-weight: 500;
+    margin: 0px 20px;
+}
+
+.btn_inicio:hover{
+    color: rgb(255, 255, 255);
+    background: var(--purpura_pastel);
+}
+
+
+.menu .redSocial{
+    margin: 0px 10px;
+}
+
+.menu .redSocial a{
+    margin: 0px 5px;
+}
+
+.menu .redSocial img{
+    width: 25px;
+}
+
+
 
 /*NAVEGACION*/
 nav {
@@ -71,7 +118,7 @@ nav ul {
 	
 nav ul li {
 	display: inline-block;
-	line-height: 80px;
+	line-height: 110px;
 }
 			
 nav ul li a {
@@ -103,7 +150,7 @@ nav ul li a:hover {
 .form_wrap{
     width: 1050px;
     height: 530px;
-    margin: 50px auto;
+    margin: 70px auto;
     display: flex;
 
     background: #fff;
