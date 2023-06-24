@@ -3,7 +3,7 @@ package com.example.proyectoFinal.Entidad;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -11,93 +11,94 @@ import java.util.Set;
 public class Usuario {
     @Id
     @Column(unique = true)
-    private String IdUsuario;
+    private String idUsuario;
 
     @Column(nullable = false)
-    private String Nombres;
+    private String nombres;
 
     @Column(nullable = false, unique = true)
-    private String Email;
+    private String email;
 
     @Column(nullable = false)
-    private String Contraseña;
+    private String contraseña;
 
     @Column(nullable = false)
-    private java.sql.Date FechaN;
+    private java.sql.Date fechaN;
 
     @Column(name = "CodVerif")
-    private String CodVerif;
+    private String codVerif;
 
     @Column(name = "imgPerfil")
     private String imgPerfil;
 
     @Column(nullable = false)
-    private String EstadoCuenta;
+    private String estadoCuenta;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private Set<Comprobante> comprobante;
 
 
-    public Usuario(String idUsuario, String nombres, String email, String contraseña, java.sql.Date fechaN, String codVerif, String imgPerfil, String estadoCuenta) {
-        IdUsuario = idUsuario;
-        Nombres = nombres;
-        Email = email;
-        Contraseña = contraseña;
-        FechaN = fechaN;
-        CodVerif = codVerif;
+    public Usuario(String idUsuario, String nombres, String email, String contraseña, Date fechaN, String codVerif, String imgPerfil, String estadoCuenta, Set<Comprobante> comprobante) {
+        this.idUsuario = idUsuario;
+        this.nombres = nombres;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.fechaN = fechaN;
+        this.codVerif = codVerif;
         this.imgPerfil = imgPerfil;
-        EstadoCuenta = estadoCuenta;
+        this.estadoCuenta = estadoCuenta;
+        this.comprobante = comprobante;
     }
 
     public Usuario() {
     }
 
     public String getIdUsuario() {
-        return IdUsuario;
+        return idUsuario;
     }
 
     public void setIdUsuario(String idUsuario) {
-        IdUsuario = idUsuario;
+        this.idUsuario = idUsuario;
     }
 
     public String getNombres() {
-        return Nombres;
+        return nombres;
     }
 
     public void setNombres(String nombres) {
-        Nombres = nombres;
+        this.nombres = nombres;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getContraseña() {
-        return Contraseña;
+        return contraseña;
     }
 
     public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+        this.contraseña = contraseña;
     }
 
-    public java.sql.Date getFechaN() {
-        return FechaN;
+    public Date getFechaN() {
+        return fechaN;
     }
 
-    public void setFechaN(java.sql.Date fechaN) {
-        FechaN = fechaN;
+    public void setFechaN(Date fechaN) {
+        this.fechaN = fechaN;
     }
 
     public String getCodVerif() {
-        return CodVerif;
+        return codVerif;
     }
 
     public void setCodVerif(String codVerif) {
-        CodVerif = codVerif;
+        this.codVerif = codVerif;
     }
 
     public String getImgPerfil() {
@@ -109,25 +110,19 @@ public class Usuario {
     }
 
     public String getEstadoCuenta() {
-        return EstadoCuenta;
+        return estadoCuenta;
     }
 
     public void setEstadoCuenta(String estadoCuenta) {
-        EstadoCuenta = estadoCuenta;
+        this.estadoCuenta = estadoCuenta;
     }
 
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "IdUsuario='" + IdUsuario + '\'' +
-                ", Nombres='" + Nombres + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Contraseña='" + Contraseña + '\'' +
-                ", FechaN='" + FechaN + '\'' +
-                ", CodVerif='" + CodVerif + '\'' +
-                ", imgPerfil='" + imgPerfil + '\'' +
-                ", EstadoCuenta='" + EstadoCuenta + '\'' +
-                '}';
+    public Set<Comprobante> getComprobante() {
+        return comprobante;
     }
+
+    public void setComprobante(Set<Comprobante> comprobante) {
+        this.comprobante = comprobante;
+    }
+
 }

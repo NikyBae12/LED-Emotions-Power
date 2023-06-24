@@ -26,6 +26,10 @@ public class ServicioUsuario {
         return repoUsuario.findById(Id_usuario).get();
     }
 
+    public Usuario buscarUsuarioxCorreo(String correo) {
+        return repoUsuario.findByEmail(correo);
+    }
+
     public String agregarUsuario(Usuario usuario){
 
         if (repoUsuario.findById(usuario.getEmail()).isPresent()){
