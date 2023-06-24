@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Usuario</title>
+    <title>Actualizar Usuario</title>
 
-    <link rel="stylesheet" href="agregarUsuario.css">
+    <link rel="stylesheet" href="actualizarUsuario.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/loto333.png" sizes="16x16 24x24 36x36 48x48">
+
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
@@ -18,7 +20,7 @@
         </div>
 
         <div class="logo">
-            <a href="">
+            <a href="principalAdmin.html">
                 <img src="img/nameb.jpg" alt="">
             </a>
         </div>
@@ -34,11 +36,27 @@
                 </div>
               </div>
 
-            <a href="iniciar.html" class="btn_inicio">Cerrar Sesión</a>
-            
+
+
+            <div class="dropdown">
+                <a class="btn_gestionar">Gestionar</a>
+                <div class="dropdown-content">
+                    <a href="">Usuario</a>
+                    <a href="">Buscar</a>
+                    <a href="">Agregar</a>
+                    <a href="">Actualizar</a>
+                    <a href="">Eliminar</a>
+
+                </div>
+            </div>
+
+            <a href="login.html" class="btn_inicio">Cerrar Sesión</a>
+
+
 
             
         </div>
+
 
     </header>
 
@@ -46,7 +64,7 @@
 
         <div class="name__page">
             <i class="fab fa-youtube"></i>
-            <h4>LED Emotions Power</h4>
+            <h4>LED EMOTIONS POWER</h4>
         </div>
 
         <div class="options__menu">	
@@ -93,42 +111,47 @@
                 </div>
             </a>
 
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-address-card" title="Nosotros"></i>
+                    <h4>Gestionar</h4>
+                </div>
+            </a>
+
         </div>
 
     </div>
 
-    <main>
+    <div class="form">
+        <div class="formulario">
+            <section class="form-registro">
+                <h4>Actualizar Usuario</h4>
+                <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
+                <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese los Nombres">
+                <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
+                <h4>Fecha de Nacimiento</h4>
+                <input class="controls" type="date" name="fechaNa" id="fechaNa" placeholder="Ingrese su Fecha Nacimiento">
+                <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
+                <input class="controls" type="text" name="correo" id="correo" placeholder="URL Imagen">                    
+                
+                <div class="controls">
+                    <select>
+                        <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
+                        <option>ACTIVA</option>
+                        <option>INACTIVA</option>
+                    </select>
+                </div>
 
-        <div class="form">
-            <div class="formulario">
-                <section class="form-registro">
-                    <h4>Actualizar Usuario</h4>
-                    <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
-                    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese los Nombres">
-                    <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-                    <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
-                    <h4>Fecha de Nacimiento</h4>
-                    <input class="controls" type="date" name="fechaNa" id="fechaNa" placeholder="Ingrese su Fecha Nacimiento">
-                    <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
-                    <input class="controls" type="text" name="correo" id="correo" placeholder="URL Imagen">                    
-                    
-                    <div class="controls">
-                        <select>
-                            <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
-                            <option>ACTIVA</option>
-                            <option>INACTIVA</option>
-                        </select>
-                    </div>
+                <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+                <div class="submit">
+                    <input class="botons" type="submit" id="actualizarUsu" value="ACTUALIZAR">
+                </div>
+            </section>
+        </div>
+    </div>
 
-                    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-                    <div class="submit">
-                        <input class="botons" type="submit" value="ACTUALIZAR">
-                    </div>
-                </section>
-            </div>
-        </div>
-    
-    </main>
+</main>
 
    
     <script src="scrip.js"></script>

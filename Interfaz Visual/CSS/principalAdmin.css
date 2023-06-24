@@ -141,9 +141,9 @@ header{
 
 /*BOTON CERRAR SEION*/
 .btn_inicio{
-  padding-left: 10px;
+  padding-left: 100px;
   display: block;
-  padding: 8px 20px;
+  padding: 8px 40px;
   border: 2px solid var(--purpura_pastel);
   border-radius: 8px;
   font-weight: 500;
@@ -152,27 +152,10 @@ header{
 }
 
 .btn_inicio:hover{
-      color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   background: var(--purpura_pastel);
 }
 
-
-/*BOTON GESTIONAR MULTIMEDIA*/
-.btn_gestionar{
-  padding-left: 10px;
-  display: block;
-  padding: 8px 20px;
-  border: 2px solid var(--purpura_pastel);
-  border-radius: 8px;
-  font-weight: 500;
-  margin: 0px 20px;
-  
-}
-
-.btn_gestionar:hover{
-      color: rgb(255, 255, 255);
-  background: var(--purpura_pastel);
-}
 
 
 
@@ -447,3 +430,9 @@ a.selected{
         left: -80px;
     }
 }
+
+
+
+
+
+

@@ -7,18 +7,21 @@
     <title>Agregar Usuario</title>
 
     <link rel="stylesheet" href="agregarUsuario.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/loto333.png" sizes="16x16 24x24 36x36 48x48">
+
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 <body id="body">
     
     <header>
+        
         <div class="icon__menu">
             <i class="fas fa-bars" id="btn_open"></i>
         </div>
 
         <div class="logo">
-            <a href="#">
+            <a href="principalAdmin.html">
                 <img src="img/nameb.jpg" alt="">
             </a>
         </div>
@@ -34,19 +37,32 @@
                 </div>
               </div>
 
-            <a href="iniciar.html" class="btn_inicio">Cerrar Sesión</a>
-            
 
+
+            <div class="dropdown">
+                <a class="btn_gestionar">Gestionar</a>
+                <div class="dropdown-content">
+                    <a href="">Usuario</a>
+                    <a href="">Buscar</a>
+                    <a href="">Agregar</a>
+                    <a href="">Actualizar</a>
+                    <a href="">Eliminar</a>
+
+                </div>
+            </div>
+
+            <a href="login.html" class="btn_inicio">Cerrar Sesión</a>
             
         </div>
 
     </header>
 
+
     <div class="menu__side" id="menu_side">
 
         <div class="name__page">
             <i class="fab fa-youtube"></i>
-            <h4>LED Emotions Power</h4>
+            <h4>LED EMOTIONS POWER</h4>
         </div>
 
         <div class="options__menu">	
@@ -93,26 +109,33 @@
                 </div>
             </a>
 
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-address-card" title="Nosotros"></i>
+                    <h4>Gestionar</h4>
+                </div>
+            </a>
+
         </div>
 
     </div>
 
-    <main>
+        <main>
 
         <div class="form">
-            <div class="formulario">
+            <div class="formulario" id="formAgregarUsuario">
                 <section class="form-registro">
                     <h4>Agregar Usuario</h4>
-                    <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
-                    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese los Nombres">
-                    <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-                    <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
+                    <input class="controls" type="text" name="IdUsuario" id="IdUsuario" placeholder="Ingrese el ID">
+                    <input class="controls" type="text" name="Nombres" id="Nombres" placeholder="Ingrese los Nombres">
+                    <input class="controls" type="email" name="Email" id="Email" placeholder="Ingrese su Correo">
+                    <input class="controls" type="password" name="Contraseña" id="Contraseña" placeholder="Ingrese su Contraseña">
                     <h4>Fecha de Nacimiento</h4>
-                    <input class="controls" type="date" name="fechaNa" id="fechaNa" placeholder="Ingrese su Fecha Nacimiento">
-                    <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
-                    <input class="controls" type="text" name="correo" id="correo" placeholder="URL Imagen">                    
+                    <input class="controls" type="date" name="FechaN" id="FechaN" placeholder="Ingrese su Fecha Nacimiento">
+                    <input class="controls" type="number" name="CodVerif" id="CodVerif" placeholder="Ingrese el Codigo de Verificación">
+                    <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
                     
-                    <div class="controls">
+                    <div class="controls" id="EstadoCuenta">
                         <select>
                             <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
                             <option>ACTIVA</option>
@@ -121,9 +144,9 @@
                     </div>
 
                     <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-                    <div class="submit">
+                    <div class="">
                         <input class="botons" type="submit" value="AGREGAR">
-                        <input class="botons" type="submit" value="LEER REGISTROS">
+
                     </div>
                 </section>
             </div>
