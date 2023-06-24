@@ -10,58 +10,49 @@ public class SesionEmo {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IdSeEmo;
+    private Integer idSeEmo;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IDSesion", referencedColumnName = "IDSesion", nullable = false)
+    @JoinColumn(name = "iDSesion", referencedColumnName = "iDSesion", nullable = false)
     @JsonIgnore
-    private SesionTerapia Id_Sesion_rel;
+    private SesionTerapia idSesionRel;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdEmocion", referencedColumnName = "IdEmocion", nullable = false)
+    @JoinColumn(name = "idEmocion", referencedColumnName = "idEmocion", nullable = false)
     @JsonIgnore
-    private Emocion Id_emocion_rel;
+    private Emocion idEmocionRel;
 
-    public SesionEmo(Integer idSeEmo, SesionTerapia id_Sesion_rel, Emocion id_emocion_rel) {
-        IdSeEmo = idSeEmo;
-        Id_Sesion_rel = id_Sesion_rel;
-        Id_emocion_rel = id_emocion_rel;
+    public SesionEmo(Integer idSeEmo, SesionTerapia idSesionRel, Emocion idEmocionRel) {
+        this.idSeEmo = idSeEmo;
+        this.idSesionRel = idSesionRel;
+        this.idEmocionRel = idEmocionRel;
     }
 
     public SesionEmo() {
     }
 
     public Integer getIdSeEmo() {
-        return IdSeEmo;
+        return idSeEmo;
     }
 
     public void setIdSeEmo(Integer idSeEmo) {
-        IdSeEmo = idSeEmo;
+        this.idSeEmo = idSeEmo;
     }
 
-    public SesionTerapia getId_Sesion_rel() {
-        return Id_Sesion_rel;
+    public SesionTerapia getIdSesionRel() {
+        return idSesionRel;
     }
 
-    public void setId_Sesion_rel(SesionTerapia id_Sesion_rel) {
-        Id_Sesion_rel = id_Sesion_rel;
+    public void setIdSesionRel(SesionTerapia idSesionRel) {
+        this.idSesionRel = idSesionRel;
     }
 
-    public Emocion getId_emocion_rel() {
-        return Id_emocion_rel;
+    public Emocion getIdEmocionRel() {
+        return idEmocionRel;
     }
 
-    public void setId_emocion_rel(Emocion id_emocion_rel) {
-        Id_emocion_rel = id_emocion_rel;
-    }
-
-    @Override
-    public String toString() {
-        return "SesionEmo{" +
-                "IdSeEmo=" + IdSeEmo +
-                ", Id_Sesion_rel=" + Id_Sesion_rel +
-                ", Id_emocion_rel=" + Id_emocion_rel +
-                '}';
+    public void setIdEmocionRel(Emocion idEmocionRel) {
+        this.idEmocionRel = idEmocionRel;
     }
 }

@@ -16,31 +16,31 @@ public class ControladorEmoMulti {
     }
 
 
-    @GetMapping("/listarMultimedia")
+    @GetMapping("/listarEmoMulti")
     public ArrayList<EmoMulti> listarMultimedia(){
         return servi_multi.ListarEmoMulti();
     }
 
 
-    @GetMapping("/buscarMultiemdia/{id}")
+    @GetMapping("/buscarEmoMulti/{id}")
     public EmoMulti buscarMultiemdia(@PathVariable("id") Integer id){
-        return servi_multi.buscarMultimedia(id);
+        return servi_multi.buscarEmoMultimedia(id);
     }
 
 
-    @PostMapping("/agregarMultimedia/{id_emo}/{id_elem}")
+    @PostMapping("/agregarEmoMulti/{id_emo}/{id_elem}")
     public String agregarMultimedia(@PathVariable("id:emo") Integer id_emo, @PathVariable("id_elem") Integer id_elem){
         return servi_multi.agregarMultimedia(id_emo, id_elem);
     }
 
 
-    @PutMapping("/actualizarMultimedia")
+    @PutMapping("/actualizarEmoMulti")
     public String actualizarMultimedia(@RequestBody EmoMulti emo_multi){
         return servi_multi.actualizarMultimedia(emo_multi);
     }
 
 
-    @DeleteMapping("/eliminarMultimedia/{id}")
+    @DeleteMapping("/eliminarEmoMulti/{id}")
     public String eliminarMultimedia(@PathVariable("id")Integer id){
         return servi_multi.elimianrMultimedia(id);
     }

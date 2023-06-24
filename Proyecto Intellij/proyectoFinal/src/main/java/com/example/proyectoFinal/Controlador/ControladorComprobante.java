@@ -18,7 +18,7 @@ public class ControladorComprobante {
 
 
     @GetMapping("/listarComprobantes")
-    public ArrayList<Comprobante> listarCompro(){
+    public ArrayList<Comprobante> listarComprobante(){
         return servi_compro.listarComprobantes();
     }
 
@@ -37,12 +37,12 @@ public class ControladorComprobante {
 
     @PutMapping("/actualizarComprobante")
     public String actualizarComprobante(@RequestBody Comprobante comprobante){
-        return servi_compro.actuzalizarComprobante(comprobante);
+        return servi_compro.actualizarComprobante(comprobante);
     }
 
 
     @DeleteMapping("/eliminarComprobante/{Id_comprob}")
     public String eliminarComprobante(@PathVariable("Id_comprob") Integer Id_comprob){
-        return servi_compro.eliminarConexion(Id_comprob);
+        return servi_compro.eliminarComprobante(Id_comprob);
     }
 }

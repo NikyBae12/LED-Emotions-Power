@@ -19,36 +19,36 @@ public class ServicioSesionTerapia {
     }
 
 
-    public SesionTerapia buscarComprobante(Integer ID_sesion){
+    public SesionTerapia buscarSesionTerapia(Integer ID_sesion){
         return respo_Sesion_ter.findById(ID_sesion).get();
     }
 
 
     public String agregarSesionTerapia(SesionTerapia sesionTerapia){
-        if (respo_Sesion_ter.findById(sesionTerapia.getIDSesion()).isPresent()){
-            return "La sesio nde teraía ya se encuentra registrada";
+        if (respo_Sesion_ter.findById(sesionTerapia.getIdSesion()).isPresent()){
+            return "La Sesión de terapia ya se encuentra registrada.";
         }else {
             respo_Sesion_ter.save(sesionTerapia);
-            return "Sesion de terapia registrada exitosamente";
+            return "Sesion de terapia registrada exitosamente.";
         }
     }
 
 
-    public String actuzalizarComprobante(SesionTerapia sesionTerapia){
-        if (respo_Sesion_ter.findById(sesionTerapia.getIDSesion()).isPresent()){
+    public String actuzalizarSesionTerapia(SesionTerapia sesionTerapia){
+        if (respo_Sesion_ter.findById(sesionTerapia.getIdSesion()).isPresent()){
             respo_Sesion_ter.save(sesionTerapia);
-            return "Sesion terapia actualizada con exito";
+            return "Sesion de terapia actualizada con exito.";
         }else {
-            return "Esta Sesion terapia no se encuentra registrada";
+            return "Esta Sesion de terapia no se encuentra registrada.";
         }
     }
 
     public String eliminarSesionTerapia(Integer ID_sesion){
         if (respo_Sesion_ter.findById(ID_sesion).isPresent()){
             respo_Sesion_ter.deleteById(ID_sesion);
-            return "Sesion de terapia elimanada correctamente";
+            return "Sesion de terapia elimanada correctamente.";
         }else {
-            return "Sesion de terapia ya eliminada";
+            return "Sesion de terapia no existente.";
         }
     }
 }

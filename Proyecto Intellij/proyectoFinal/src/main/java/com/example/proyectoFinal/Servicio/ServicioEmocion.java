@@ -15,7 +15,7 @@ public class ServicioEmocion {
         this.repositorioEmocion = RepositorioEmocion;
     }
 
-    public ArrayList<Emocion> listarEmocion(){
+    public ArrayList<Emocion> listarEmociones(){
 
         return (ArrayList<Emocion>) repositorioEmocion.findAll();
     }
@@ -29,29 +29,29 @@ public class ServicioEmocion {
 
     public String agregarEmocion(Emocion Emocion){
         if (repositorioEmocion.findById(Emocion.getIdEmocion()).isPresent()){
-            return "El Emocion ya se encuentra registrada";
+            return "La Emocion ya se encuentra registrada.";
         }else {
             repositorioEmocion.save(Emocion);
-            return "Emocion registrada exitosamente";
+            return "Emocion registrada exitosamente.";
         }
     }
 
 
-    public String actuzalizarEmocion(Emocion Emocion){
+    public String actualizarEmocion(Emocion Emocion){
         if (repositorioEmocion.findById(Emocion.getIdEmocion()).isPresent()){
             repositorioEmocion.save(Emocion);
-            return "Emocion actualizada con exito";
+            return "Emocion actualizada con exito.";
         }else {
-            return "Esta emoción no se encuentra registrada";
+            return "Esta emoción no se encuentra registrada.";
         }
     }
 
     public String eliminarEmocion(Integer Id_emocion){
         if (repositorioEmocion.findById(Id_emocion).isPresent()){
             repositorioEmocion.deleteById(Id_emocion);
-            return "Emocion elimanda correctamente";
+            return "Emocion eliminada correctamente.";
         }else {
-            return "Emocion ya eliminada";
+            return "Emocion ya eliminada o no existente.";
         }
     }
 }

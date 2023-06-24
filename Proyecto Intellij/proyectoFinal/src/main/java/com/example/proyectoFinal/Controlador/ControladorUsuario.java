@@ -40,7 +40,7 @@ public class ControladorUsuario {
     }
 
 
-    @PutMapping("/actuUsuario")
+    @PutMapping("/actualizarUsuario")
     public String ActualizarUsuario(@RequestBody Usuario usuario){
         return servi_usu.actualizarUsuario(usuario);
     }

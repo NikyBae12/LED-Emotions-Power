@@ -9,56 +9,47 @@ import jakarta.persistence.*;
 public class EmoMulti {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IdEmoMulti;
+    private Integer idEmoMulti;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdEmocion", referencedColumnName = "IdEmocion", nullable = false)
+    @JoinColumn(name = "idEmocion", referencedColumnName = "idEmocion", nullable = false)
     @JsonIgnore
-    private Emocion Id_emocion_rel;
+    private Emocion idEmocionRel;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdElemento", referencedColumnName = "IdElemento", nullable = false)
+    @JoinColumn(name = "idElemento", referencedColumnName = "idElemento", nullable = false)
     @JsonIgnore
-    private Multimedia multimedia_rel;
+    private Multimedia multimediaRel;
 
-    public EmoMulti(Integer idEmoMulti, Emocion id_emocion_rel, Multimedia multimedia_rel) {
-        IdEmoMulti = idEmoMulti;
-        Id_emocion_rel = id_emocion_rel;
-        this.multimedia_rel = multimedia_rel;
+    public EmoMulti(Integer idEmoMulti, Emocion idEmocionRel, Multimedia multimediaRel) {
+        this.idEmoMulti = idEmoMulti;
+        this.idEmocionRel = idEmocionRel;
+        this.multimediaRel = multimediaRel;
     }
 
     public EmoMulti() {
     }
 
     public Integer getIdEmoMulti() {
-        return IdEmoMulti;
+        return idEmoMulti;
     }
 
     public void setIdEmoMulti(Integer idEmoMulti) {
-        IdEmoMulti = idEmoMulti;
+        this.idEmoMulti = idEmoMulti;
     }
 
-    public Emocion getId_emocion_rel() {
-        return Id_emocion_rel;
+    public Emocion getIdEmocionRel() {
+        return idEmocionRel;
     }
 
-    public void setId_emocion_rel(Emocion id_emocion_rel) {
-        Id_emocion_rel = id_emocion_rel;
+    public void setIdEmocionRel(Emocion idEmocionRel) {
+        this.idEmocionRel = idEmocionRel;
     }
 
-    public Multimedia getMultimedia_rel() {
-        return multimedia_rel;
+    public Multimedia getMultimediaRel() {
+        return multimediaRel;
     }
 
-    public void setMultimedia_rel(Multimedia multimedia_rel) {
-        this.multimedia_rel = multimedia_rel;
-    }
-
-    @Override
-    public String toString() {
-        return "EmoMulti{" +
-                "IdEmoMulti=" + IdEmoMulti +
-                ", Id_emocion_rel=" + Id_emocion_rel +
-                ", multimedia_rel=" + multimedia_rel +
-                '}';
+    public void setMultimediaRel(Multimedia multimediaRel) {
+        this.multimediaRel = multimediaRel;
     }
 }

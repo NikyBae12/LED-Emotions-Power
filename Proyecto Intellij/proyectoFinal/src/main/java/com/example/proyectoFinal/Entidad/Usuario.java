@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
 public class Usuario {
     @Id
     @Column(unique = true)
@@ -25,7 +25,7 @@ public class Usuario {
     @Column(nullable = false)
     private java.sql.Date fechaN;
 
-    @Column(name = "CodVerif")
+    @Column(name = "codVerif")
     private String codVerif;
 
     @Column(name = "imgPerfil")
@@ -38,7 +38,7 @@ public class Usuario {
     private Set<Comprobante> comprobante;
 
 
-    public Usuario(String idUsuario, String nombres, String email, String contraseña, Date fechaN, String codVerif, String imgPerfil, String estadoCuenta, Set<Comprobante> comprobante) {
+    public Usuario(String idUsuario, String nombres, String email, String contraseña, Date fechaN, String codVerif, String imgPerfil, String estadoCuenta) {
         this.idUsuario = idUsuario;
         this.nombres = nombres;
         this.email = email;
@@ -47,7 +47,6 @@ public class Usuario {
         this.codVerif = codVerif;
         this.imgPerfil = imgPerfil;
         this.estadoCuenta = estadoCuenta;
-        this.comprobante = comprobante;
     }
 
     public Usuario() {
@@ -124,5 +123,4 @@ public class Usuario {
     public void setComprobante(Set<Comprobante> comprobante) {
         this.comprobante = comprobante;
     }
-
 }

@@ -11,10 +11,10 @@ public class Emocion {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IdEmocion;
+    private Integer idEmocion;
 
     @Column(nullable = false)
-    private String ENombre;
+    private String eNombre;
 
     @Column(nullable = false)
     private int eColorRed;
@@ -29,12 +29,12 @@ public class Emocion {
     private Boolean eEstadoA;
 
 
-    @OneToMany(mappedBy = "Id_emocion_rel", fetch = FetchType.LAZY)
-    private Set<SesionEmo> Sesion_rel;
+    @OneToMany(mappedBy = "idEmocionRel", fetch = FetchType.LAZY)
+    private Set<SesionEmo> sesionRel;
 
-    public Emocion(Integer idEmocion, String ENombre, int eColorRed, int eColorGreen, int eColorBlue, Boolean eEstadoA) {
-        IdEmocion = idEmocion;
-        this.ENombre = ENombre;
+    public Emocion(Integer idEmocion, String eNombre, int eColorRed, int eColorGreen, int eColorBlue, Boolean eEstadoA) {
+        this.idEmocion = idEmocion;
+        this.eNombre = eNombre;
         this.eColorRed = eColorRed;
         this.eColorGreen = eColorGreen;
         this.eColorBlue = eColorBlue;
@@ -45,19 +45,19 @@ public class Emocion {
     }
 
     public Integer getIdEmocion() {
-        return IdEmocion;
+        return idEmocion;
     }
 
     public void setIdEmocion(Integer idEmocion) {
-        IdEmocion = idEmocion;
+        this.idEmocion = idEmocion;
     }
 
-    public String getENombre() {
-        return ENombre;
+    public String geteNombre() {
+        return eNombre;
     }
 
-    public void setENombre(String ENombre) {
-        this.ENombre = ENombre;
+    public void seteNombre(String eNombre) {
+        this.eNombre = eNombre;
     }
 
     public int geteColorRed() {
@@ -92,16 +92,11 @@ public class Emocion {
         this.eEstadoA = eEstadoA;
     }
 
-    @Override
-    public String toString() {
-        return "Emocion{" +
-                "IdEmocion=" + IdEmocion +
-                ", ENombre='" + ENombre + '\'' +
-                ", eColorRed=" + eColorRed +
-                ", eColorGreen=" + eColorGreen +
-                ", eColorBlue=" + eColorBlue +
-                ", eEstadoA=" + eEstadoA +
-                ", Sesion_rel=" + Sesion_rel +
-                '}';
+    public Set<SesionEmo> getSesionRel() {
+        return sesionRel;
+    }
+
+    public void setSesionRel(Set<SesionEmo> sesionRel) {
+        this.sesionRel = sesionRel;
     }
 }

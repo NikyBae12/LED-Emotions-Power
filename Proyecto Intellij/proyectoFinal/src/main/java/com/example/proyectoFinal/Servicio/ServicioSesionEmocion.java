@@ -12,26 +12,26 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class ServicioSesionEmocional {
+public class ServicioSesionEmocion {
     private RepositorioSesionEmo repo_Ses_Emo;
     private RepositorioSesionTerapia repo_Sesio_Tera;
     private RepositorioEmocion repo_Emo;
 
-    public ServicioSesionEmocional(RepositorioSesionEmo repo_Ses_Emo, RepositorioSesionTerapia repo_Sesio_Tera, RepositorioEmocion repo_Emo) {
+    public ServicioSesionEmocion(RepositorioSesionEmo repo_Ses_Emo, RepositorioSesionTerapia repo_Sesio_Tera, RepositorioEmocion repo_Emo) {
         this.repo_Ses_Emo = repo_Ses_Emo;
         this.repo_Sesio_Tera = repo_Sesio_Tera;
         this.repo_Emo = repo_Emo;
     }
 
-    public ArrayList<SesionEmo> listarSesionesEmocionales(){
+    public ArrayList<SesionEmo> listarSesionEmociones(){
         return (ArrayList<SesionEmo>) repo_Ses_Emo.findAll();
     }
 
-    public SesionEmo buscarSesionEmocional(Integer id){
+    public SesionEmo buscarSesionEmociones(Integer id){
         return repo_Ses_Emo.findById(id).get();
     }
 
-    public String agregarSesionEmocional(Integer Id_Sesion, Integer iD_Emocion){
+    public String agregarSesionEmociones(Integer Id_Sesion, Integer iD_Emocion){
 
         SesionEmo sesEmo = new SesionEmo();
 
@@ -40,35 +40,35 @@ public class ServicioSesionEmocional {
             SesionTerapia sesiTera = repo_Sesio_Tera.findById(Id_Sesion).get();
             Emocion emo = repo_Emo.findById(iD_Emocion).get();
 
-            sesEmo.setId_Sesion_rel(sesiTera);
-            sesEmo.setId_emocion_rel(emo);
+            sesEmo.setIdSesionRel(sesiTera);
+            sesEmo.setIdEmocionRel(emo);
 
             repo_Ses_Emo.save(sesEmo);
 
-            return "Sesion emocional registrada";
+            return "Emociones registradas a Sesion de Terapia.";
         }else {
-            return "Sesion ya regstrada";
+            return "Emociones ya regstradas";
         }
     }
 
 
-    public String actualizarSesionEmocioanl(SesionEmo sesion_emo){
+    public String actualizarSesionEmociones(SesionEmo sesion_emo){
 
         if (repo_Ses_Emo.findById(sesion_emo.getIdSeEmo()).isPresent()){
             repo_Ses_Emo.save(sesion_emo);
-            return "Sesion emocional guardada con exito";
+            return "Emociones actualizadas en Sesion de Terapia con exito.";
         }else {
-            return "Esta sesion emocional ya se encuentra registrada";
+            return "Sesion no encontrada.";
         }
 
     }
 
-    public String eliminarSesionEmocional(Integer id){
+    public String eliminarSesionEmociones(Integer id){
         if (repo_Ses_Emo.findById(id).isPresent()){
             repo_Ses_Emo.deleteById(id);
-            return "Sesion emocioanl eliminada con exito";
+            return "Sesion y emociones eliminadas con exito";
         }else {
-            return "Sesion emocional ya eliminada o no existente";
+            return "Sesion y emociones no existente";
         }
     }
 }

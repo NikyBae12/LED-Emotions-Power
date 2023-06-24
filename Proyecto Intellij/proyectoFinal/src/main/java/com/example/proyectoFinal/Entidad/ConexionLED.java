@@ -10,57 +10,56 @@ import java.util.Set;
 public class ConexionLED {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IdConexion;
-
-    @Column(nullable = false) //nullable = Se requiere el atributo
-    private String IdLed;
+    private Integer idConexion;
 
     @Column(nullable = false)
-    private Boolean CEstado;
+    private String idLed;
 
-    @OneToMany(mappedBy = "conexiones_rel", fetch = FetchType.LAZY)
-    private Set<SesionTerapia> sesion_rel;
+    @Column(nullable = false)
+    private Boolean cEstado;
+
+    @OneToMany(mappedBy = "conexionesRel", fetch = FetchType.LAZY)
+    private Set<SesionTerapia> sesionRel;
 
 
-    public ConexionLED(Integer idConexion, String idLed, Boolean CEstado) {
-        IdConexion = idConexion;
-        IdLed = idLed;
-        this.CEstado = CEstado;
+    public ConexionLED(Integer idConexion, String idLed, Boolean cEstado) {
+        this.idConexion = idConexion;
+        this.idLed = idLed;
+        this.cEstado = cEstado;
     }
 
     public ConexionLED() {
     }
 
     public Integer getIdConexion() {
-        return IdConexion;
+        return idConexion;
     }
 
     public void setIdConexion(Integer idConexion) {
-        IdConexion = idConexion;
+        this.idConexion = idConexion;
     }
 
     public String getIdLed() {
-        return IdLed;
+        return idLed;
     }
 
     public void setIdLed(String idLed) {
-        IdLed = idLed;
+        this.idLed = idLed;
     }
 
-    public Boolean getCEstado() {
-        return CEstado;
+    public Boolean getcEstado() {
+        return cEstado;
     }
 
-    public void setCEstado(Boolean CEstado) {
-        this.CEstado = CEstado;
+    public void setcEstado(Boolean cEstado) {
+        this.cEstado = cEstado;
     }
 
-    @Override
-    public String toString() {
-        return "ConexionLED{" +
-                "IdConexion=" + IdConexion +
-                ", IdLed='" + IdLed + '\'' +
-                ", CEstado=" + CEstado +
-                '}';
+    public Set<SesionTerapia> getSesionRel() {
+        return sesionRel;
+    }
+
+    public void setSesionRel(Set<SesionTerapia> sesionRel) {
+        this.sesionRel = sesionRel;
     }
 }

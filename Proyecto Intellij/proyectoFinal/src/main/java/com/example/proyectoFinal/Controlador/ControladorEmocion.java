@@ -17,11 +17,11 @@ public class ControladorEmocion {
 
     @GetMapping("/listarEmociones")
     public ArrayList<Emocion> listarEmociones(){
-        return servicio_emociones.listarEmocion();
+        return servicio_emociones.listarEmociones();
     }
 
-    @GetMapping("/buscarEmociones/{Id_emocion}")
-    public Emocion buscarEmociones(@PathVariable("Id_emocion") Integer Id_emocion){
+    @GetMapping("/buscarEmocion/{Id_emocion}")
+    public Emocion buscarEmocion(@PathVariable("Id_emocion") Integer Id_emocion){
 
         return servicio_emociones.buscarEmocion(Id_emocion);
     }
@@ -31,12 +31,12 @@ public class ControladorEmocion {
         return servicio_emociones.agregarEmocion(emociones);
     }
 
-    @PutMapping("/actualizarEmociones")
+    @PutMapping("/actualizarEmocion")
     public String actualizarEmociones(@RequestBody Emocion emociones){
-        return servicio_emociones.actuzalizarEmocion(emociones);
+        return servicio_emociones.actualizarEmocion(emociones);
     }
 
-    @DeleteMapping("/eliminarEmociones/{Id_emocion}")
+    @DeleteMapping("/eliminarEmocion/{Id_emocion}")
     public String eliminarEmociones(@PathVariable("Id_emocion") Integer Id_emocion){
         return servicio_emociones.eliminarEmocion(Id_emocion);
     }
