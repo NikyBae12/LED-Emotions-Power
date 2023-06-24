@@ -3,6 +3,7 @@ package com.example.proyectoFinal.Entidad;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -22,7 +23,7 @@ public class Usuario {
     private String Contraseña;
 
     @Column(nullable = false)
-    private String FechaN;
+    private java.sql.Date FechaN;
 
     @Column(name = "CodVerif")
     private String CodVerif;
@@ -33,11 +34,11 @@ public class Usuario {
     @Column(nullable = false)
     private String EstadoCuenta;
 
-    @OneToMany(mappedBy = "usuario_rel", fetch = FetchType.LAZY)
-    private Set<Comprobante> comprobante_rel;
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Set<Comprobante> comprobante;
 
 
-    public Usuario(String idUsuario, String nombres, String email, String contraseña, String fechaN, String codVerif, String imgPerfil, String estadoCuenta) {
+    public Usuario(String idUsuario, String nombres, String email, String contraseña, java.sql.Date fechaN, String codVerif, String imgPerfil, String estadoCuenta) {
         IdUsuario = idUsuario;
         Nombres = nombres;
         Email = email;
@@ -83,11 +84,11 @@ public class Usuario {
         Contraseña = contraseña;
     }
 
-    public String getFechaN() {
+    public java.sql.Date getFechaN() {
         return FechaN;
     }
 
-    public void setFechaN(String fechaN) {
+    public void setFechaN(java.sql.Date fechaN) {
         FechaN = fechaN;
     }
 
@@ -114,6 +115,7 @@ public class Usuario {
     public void setEstadoCuenta(String estadoCuenta) {
         EstadoCuenta = estadoCuenta;
     }
+
 
     @Override
     public String toString() {

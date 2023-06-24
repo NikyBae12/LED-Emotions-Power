@@ -30,8 +30,9 @@ public class SesionTerapia {
     @Temporal(TemporalType.DATE)
     private Date FechaSesion;
 
-    public SesionTerapia(Date fecha_Sesi) {
-        FechaSesion = fecha_Sesi;
+    @PrePersist
+    public void fechaHoy() {
+        this.FechaSesion = new Date();
     }
 
 

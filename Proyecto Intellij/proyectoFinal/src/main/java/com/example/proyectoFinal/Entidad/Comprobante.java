@@ -31,15 +31,17 @@ public class Comprobante {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "IdUsuario", referencedColumnName = "IdUsuario", nullable = false)
     @JsonIgnore
-    private Usuario usuario_rel;
+    private Usuario usuario;
 
     public Comprobante(Integer idComprobante, Date fechaActu, int factura, int valor, Usuario usuario_rel) {
         IdComprobante = idComprobante;
         FechaActu = fechaActu;
         Factura = factura;
         Valor = valor;
-        this.usuario_rel = usuario_rel;
+        this.usuario = usuario_rel;
     }
+
+
 
     public Comprobante() {
     }
@@ -77,11 +79,11 @@ public class Comprobante {
     }
 
     public Usuario getUsuario_rel() {
-        return usuario_rel;
+        return usuario;
     }
 
     public void setUsuario_rel(Usuario usuario_rel) {
-        this.usuario_rel = usuario_rel;
+        this.usuario = usuario_rel;
     }
 
     @Override
@@ -91,7 +93,7 @@ public class Comprobante {
                 ", FechaActu=" + FechaActu +
                 ", Factura=" + Factura +
                 ", Valor=" + Valor +
-                ", usuario_rel=" + usuario_rel +
+                ", usuario_rel=" + usuario +
                 '}';
     }
 }
