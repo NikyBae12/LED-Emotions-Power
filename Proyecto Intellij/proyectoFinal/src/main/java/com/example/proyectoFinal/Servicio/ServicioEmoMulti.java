@@ -9,7 +9,11 @@ import com.example.proyectoFinal.Repositorio.RepositorioMultimedia;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+//REVISAR
 
+
+
+// !!!!!!!
 @Service
 public class ServicioEmoMulti {
 
@@ -28,7 +32,7 @@ public class ServicioEmoMulti {
     }
 
 
-    public EmoMulti buscarMultimedia(Integer id){
+    public EmoMulti buscarEmoMultimedia(Integer id){
         return repositorio_multi.findById(id).get();
     }
 
@@ -41,20 +45,20 @@ public class ServicioEmoMulti {
             Emocion emocion = repositorio_emociones.findById(id_emo).get();
             Multimedia multimedia = repositorio_multimedia.findById(id_elem).get();
 
-            emo_multi.setId_emocion_rel(emocion);
-            emo_multi.setMultimedia_rel(multimedia);
+            emo_multi.setIdEmocionRel(emocion);
+            emo_multi.setMultimediaRel(multimedia);
 
-            return "El elemento multimedia ya se encuentra registrado";
+            return "El elemento multimedia ya se encuentra registrado.";
         }else {
             repositorio_multi.save(emo_multi);
-            return "Elemento multimedia registrado con exito";
+            return "Elemento multimedia registrado con exito.";
         }
     }
 
     public String actualizarMultimedia(EmoMulti emo_multi){
         if (repositorio_multi.findById(emo_multi.getIdEmoMulti()).isPresent()){
             repositorio_multi.save(emo_multi);
-            return "Elemento multimedia actuazliado con exito";
+            return "Elemento multimedia actualizado con exito.";
         }else {
             return  "Este elemento ya no se encuentra registrado";
         }

@@ -16,32 +16,32 @@ public class ControladorMultimedia {
     }
 
 
-    @GetMapping("/listarElementos")
+    @GetMapping("/listarElementosM")
     public ArrayList<Multimedia> listarElementos(){
-        return servicio_multimedia.listarElemento();
+        return servicio_multimedia.listarElementosM();
     }
 
 
-    @GetMapping("/buscarElemento/{id}")
+    @GetMapping("/buscarElementoM/{id}")
     public Multimedia buscarElemento(@PathVariable("id")Integer id){
-        return servicio_multimedia.encontrarElemento(id);
+        return servicio_multimedia.buscarElementoM(id);
     }
 
 
-    @PostMapping("/agregarElemento")
+    @PostMapping("/agregarElementoM")
     public String agregarElemento(@RequestBody Multimedia multimedia){
-        return servicio_multimedia.agregarElemento(multimedia);
+        return servicio_multimedia.agregarElementoM(multimedia);
     }
 
 
-    @PutMapping("/actualiazarElemento")
+    @PutMapping("/actualizarElementoM")
     public String actualiazarElemento(@RequestBody Multimedia multimedia){
-        return servicio_multimedia.actualizarElemento(multimedia);
+        return servicio_multimedia.actualizarElementoM(multimedia);
     }
 
 
-    @DeleteMapping("/eliminarElemento/{id}")
+    @DeleteMapping("/eliminarElementoM/{id}")
     public String eliminarElemento(@PathVariable("id")Integer id){
-        return servicio_multimedia.eliminarElemento(id);
+        return servicio_multimedia.eliminarElementoM(id);
     }
 }

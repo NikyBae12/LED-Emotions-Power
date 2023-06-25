@@ -14,25 +14,25 @@ public class ControladorConexionLED {
         this.servicioConexionLED = servicioConexionLED;
     }
 
-    @GetMapping("/listarConexiones")
-    public ArrayList<ConexionLED> listarCone(){ return servicioConexionLED.listarConexiones(); }
+    @GetMapping("/listarConexionesLED")
+    public ArrayList<ConexionLED> listarConexion(){ return servicioConexionLED.listarConexiones(); }
 
-    @GetMapping("/buscarConexion/{id}")
+    @GetMapping("/buscarConexionLED/{id}")
     public ConexionLED buscarConexion(@PathVariable("id") Integer id){
         return servicioConexionLED.buscarConexion(id);
     }
 
-    @PostMapping("/agregarConexion")
+    @PostMapping("/agregarConexionLED")
     public String agregarConexion(@RequestBody ConexionLED Conexion){
         return servicioConexionLED.agregarConexion(Conexion);
     }
 
-    @PutMapping("/actualizarConexion")
+    @PutMapping("/actualizarConexionLED")
     public String actualizarConexion(@RequestBody ConexionLED Conexion){
         return servicioConexionLED.actualizarConexion(Conexion);
     }
 
-    @DeleteMapping("/eliminarConexion/{id}")
+    @DeleteMapping("/eliminarConexionLED/{id}")
     public String eliminarConexion(@PathVariable("id") Integer id){
         return servicioConexionLED.eliminarConexion(id);
     }

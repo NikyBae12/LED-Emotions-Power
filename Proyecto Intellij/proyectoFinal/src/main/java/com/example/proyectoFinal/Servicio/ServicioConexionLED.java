@@ -27,29 +27,29 @@ public class ServicioConexionLED {
 
     public String agregarConexion(ConexionLED Conexion){
         if (repoConexionLED.findById(Conexion.getIdConexion()).isPresent()){
-            return "La conexion ya se encuentra registrado";
+            return "La conexion ya se encuentra registrada.";
 
         }else {
             repoConexionLED.save(Conexion);
-            return "Conexion registrada con exito";
+            return "Conexion registrada con exito.";
         }
     }
 
     public String actualizarConexion(ConexionLED Conexion){
         if (repoConexionLED.findById(Conexion.getIdConexion()).isPresent()){
             repoConexionLED.save(Conexion);
-            return "Conexion actualizada con exito";
+            return "Conexion actualizada con exito.";
         }else {
-            return "Esta conexion no se encuentra registrada";
+            return "Esta conexion no se encuentra registrada.";
         }
     }
 
     public String desactivarConexion(ConexionLED conexionLED){
-        if (repoConexionLED.findById(conexionLED.getIdConexion()).isPresent() && conexionLED.getCEstado()){
-            if (conexionLED.getCEstado()){
+        if (repoConexionLED.findById(conexionLED.getIdConexion()).isPresent() && conexionLED.getcEstado()){
+            if (conexionLED.getcEstado()){
 
-                conexionLED.setCEstado(false);
-                return "Conexion desactivada con exito";
+                conexionLED.setcEstado(false);
+                return "Conexion desactivada con exito.";
 
             } else {
 
@@ -62,11 +62,11 @@ public class ServicioConexionLED {
     }
 
     public String activarConexion(ConexionLED conexionLED){
-        if (repoConexionLED.findById(conexionLED.getIdConexion()).isPresent() && conexionLED.getCEstado() == false){
+        if (repoConexionLED.findById(conexionLED.getIdConexion()).isPresent() && conexionLED.getcEstado() == false){
 
-            if (conexionLED.getCEstado()){
+            if (conexionLED.getcEstado()){
 
-                conexionLED.setCEstado(true);
+                conexionLED.setcEstado(true);
                 return "Conexion activada con exito.";
 
             } else {
@@ -85,7 +85,7 @@ public class ServicioConexionLED {
             repoConexionLED.deleteById(id);
             return "Conexion eliminada con exito";
         }else {
-            return "Conexión ya eliminada o no existente";
+            return "Conexión ya eliminada o no existente.";
         }
     }
 }

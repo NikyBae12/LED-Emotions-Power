@@ -11,87 +11,76 @@ import java.util.Date;
 public class Comprobante {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IdComprobante;
+    private Integer idComprobante;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date FechaActu;
+    private Date fechaActu;
 
     @PrePersist
     public void fecha_hoy(){
-        this.FechaActu = new Date();
+        this.fechaActu = new Date();
     }
 
     @Column(nullable = false)
-    private int Factura;
+    private int factura;
 
     @Column(nullable = false)
-    private int Valor;
+    private int valor;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdUsuario", referencedColumnName = "IdUsuario", nullable = false)
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
     @JsonIgnore
-    private Usuario usuario_rel;
+    private Usuario usuario;
 
-    public Comprobante(Integer idComprobante, Date fechaActu, int factura, int valor, Usuario usuario_rel) {
-        IdComprobante = idComprobante;
-        FechaActu = fechaActu;
-        Factura = factura;
-        Valor = valor;
-        this.usuario_rel = usuario_rel;
+    public Comprobante(Integer idComprobante, Date fechaActu, int factura, int valor, Usuario usuario) {
+        this.idComprobante = idComprobante;
+        this.fechaActu = fechaActu;
+        this.factura = factura;
+        this.valor = valor;
+        this.usuario = usuario;
     }
 
     public Comprobante() {
     }
 
     public Integer getIdComprobante() {
-        return IdComprobante;
+        return idComprobante;
     }
 
     public void setIdComprobante(Integer idComprobante) {
-        IdComprobante = idComprobante;
+        this.idComprobante = idComprobante;
     }
 
     public Date getFechaActu() {
-        return FechaActu;
+        return fechaActu;
     }
 
     public void setFechaActu(Date fechaActu) {
-        FechaActu = fechaActu;
+        this.fechaActu = fechaActu;
     }
 
     public int getFactura() {
-        return Factura;
+        return factura;
     }
 
     public void setFactura(int factura) {
-        Factura = factura;
+        this.factura = factura;
     }
 
     public int getValor() {
-        return Valor;
+        return valor;
     }
 
     public void setValor(int valor) {
-        Valor = valor;
+        this.valor = valor;
     }
 
-    public Usuario getUsuario_rel() {
-        return usuario_rel;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuario_rel(Usuario usuario_rel) {
-        this.usuario_rel = usuario_rel;
-    }
-
-    @Override
-    public String toString() {
-        return "Comprobante{" +
-                "IdComprobante=" + IdComprobante +
-                ", FechaActu=" + FechaActu +
-                ", Factura=" + Factura +
-                ", Valor=" + Valor +
-                ", usuario_rel=" + usuario_rel +
-                '}';
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

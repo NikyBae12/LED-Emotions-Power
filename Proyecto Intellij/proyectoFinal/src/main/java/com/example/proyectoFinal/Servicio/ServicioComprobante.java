@@ -29,29 +29,29 @@ public class ServicioComprobante {
 
     public String agregarComprobante(Comprobante comprobante){
         if (respo_comp.findById(comprobante.getIdComprobante()).isPresent()){
-            return "El comprobante ya se encuentra registrada";
+            return "El comprobante ya se encuentra registrado.";
         }else {
             respo_comp.save(comprobante);
-            return "Coprobante registrado exitosamente";
+            return "Coprobante registrado exitosamente.";
         }
     }
 
 
-    public String actuzalizarComprobante(Comprobante comprobante){
+    public String actualizarComprobante(Comprobante comprobante){
         if (respo_comp.findById(comprobante.getIdComprobante()).isPresent()){
             respo_comp.save(comprobante);
-            return "Comprobante actualizado con exito";
+            return "Comprobante actualizado con exito.";
         }else {
-            return "Este coprobante no se encuentra registrado";
+            return "Este comprobante no se encuentra registrado.";
         }
     }
 
-    public String eliminarConexion(Integer Id_comprob){
+    public String eliminarComprobante(Integer Id_comprob){
         if (respo_comp.findById(Id_comprob).isPresent()){
             respo_comp.deleteById(Id_comprob);
-            return "Comprobante elimando correctamente";
+            return "Comprobante elimando correctamente.";
         }else {
-            return "Comprobante ya eliminado";
+            return "Comprobante ya eliminado o no existente.";
         }
     }
 }

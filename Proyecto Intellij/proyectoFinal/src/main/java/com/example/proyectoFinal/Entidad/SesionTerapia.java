@@ -12,91 +12,81 @@ public class SesionTerapia {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IDSesion;
+    private Integer idSesion;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdConexion", referencedColumnName = "IdConexion", nullable = false)
+    @JoinColumn(name = "idConexion", referencedColumnName = "idConexion", nullable = false)
     @JsonIgnore
-    private ConexionLED conexiones_rel;
+    private ConexionLED conexionesRel;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "IdUsuario", referencedColumnName = "IdUsuario", nullable = false)
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = false)
     @JsonIgnore
-    private Usuario usuario_rel;
+    private Usuario usuarioRel;
 
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date FechaSesion;
+    private Date fechaSesion;
 
-    public SesionTerapia(Date fecha_Sesi) {
-        FechaSesion = fecha_Sesi;
+    @PrePersist
+    public void fechaHoy() {
+        this.fechaSesion = new Date();
     }
 
 
-    @Column(name = "NivelSatis")
-    private int NivelSatis;
+    @Column(name = "nivelSatis")
+    private int nivelSatis;
 
-    public SesionTerapia(Integer IDSesion, ConexionLED conexiones_rel, Usuario usuario_rel, Date fechaSesion, int nivelSatis) {
-        this.IDSesion = IDSesion;
-        this.conexiones_rel = conexiones_rel;
-        this.usuario_rel = usuario_rel;
-        FechaSesion = fechaSesion;
-        NivelSatis = nivelSatis;
+    public SesionTerapia(Integer idSesion, ConexionLED conexionesRel, Usuario usuarioRel, Date fechaSesion, int nivelSatis) {
+        this.idSesion = idSesion;
+        this.conexionesRel = conexionesRel;
+        this.usuarioRel = usuarioRel;
+        this.fechaSesion = fechaSesion;
+        this.nivelSatis = nivelSatis;
     }
 
     public SesionTerapia() {
     }
 
-    public Integer getIDSesion() {
-        return IDSesion;
+    public Integer getIdSesion() {
+        return idSesion;
     }
 
-    public void setIDSesion(Integer IDSesion) {
-        this.IDSesion = IDSesion;
+    public void setIdSesion(Integer idSesion) {
+        this.idSesion = idSesion;
     }
 
-    public ConexionLED getConexiones_rel() {
-        return conexiones_rel;
+    public ConexionLED getConexionesRel() {
+        return conexionesRel;
     }
 
-    public void setConexiones_rel(ConexionLED conexiones_rel) {
-        this.conexiones_rel = conexiones_rel;
+    public void setConexionesRel(ConexionLED conexionesRel) {
+        this.conexionesRel = conexionesRel;
     }
 
-    public Usuario getUsuario_rel() {
-        return usuario_rel;
+    public Usuario getUsuarioRel() {
+        return usuarioRel;
     }
 
-    public void setUsuario_rel(Usuario usuario_rel) {
-        this.usuario_rel = usuario_rel;
+    public void setUsuarioRel(Usuario usuarioRel) {
+        this.usuarioRel = usuarioRel;
     }
 
     public Date getFechaSesion() {
-        return FechaSesion;
+        return fechaSesion;
     }
 
     public void setFechaSesion(Date fechaSesion) {
-        FechaSesion = fechaSesion;
+        this.fechaSesion = fechaSesion;
     }
 
     public int getNivelSatis() {
-        return NivelSatis;
+        return nivelSatis;
     }
 
     public void setNivelSatis(int nivelSatis) {
-        NivelSatis = nivelSatis;
-    }
-
-    @Override
-    public String toString() {
-        return "SesionTerapia{" +
-                "IDSesion=" + IDSesion +
-                ", conexiones_rel=" + conexiones_rel +
-                ", usuario_rel=" + usuario_rel +
-                ", FechaSesion=" + FechaSesion +
-                ", NivelSatis=" + NivelSatis +
-                '}';
+        this.nivelSatis = nivelSatis;
     }
 }

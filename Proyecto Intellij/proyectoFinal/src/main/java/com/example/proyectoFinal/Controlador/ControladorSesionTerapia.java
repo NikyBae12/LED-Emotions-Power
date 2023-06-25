@@ -22,25 +22,25 @@ public class ControladorSesionTerapia {
     }
 
 
-    @GetMapping("/buiscarSesionTer/{ID_sesion}")
+    @GetMapping("/buscarSesionTerapia/{ID_sesion}")
     public SesionTerapia buscarSesionTerapia(@PathVariable("ID_sesion") Integer ID_sesion){
-        return servicio_sesion_terapia.buscarComprobante(ID_sesion);
+        return servicio_sesion_terapia.buscarSesionTerapia(ID_sesion);
     }
 
 
-    @PostMapping("/agregarSesionTer")
+    @PostMapping("/agregarSesionTerapia")
     public String agregarSesionTer(@RequestBody SesionTerapia sesionTerapia){
         return servicio_sesion_terapia.agregarSesionTerapia(sesionTerapia);
     }
 
 
-    @PutMapping("/actualizarSesionTer")
+    @PutMapping("/actualizarSesionTerapia")
     public String actualizarSesionTer(@RequestBody SesionTerapia sesionTerapia){
-        return servicio_sesion_terapia.actuzalizarComprobante(sesionTerapia);
+        return servicio_sesion_terapia.actuzalizarSesionTerapia(sesionTerapia);
     }
 
 
-    @DeleteMapping("/eliminarSesionTer/{ID_sesion}")
+    @DeleteMapping("/eliminarSesionTerapia/{ID_sesion}")
     public String aliminarSesionTer(@PathVariable("ID_sesion") Integer ID_sesion){
         return servicio_sesion_terapia.eliminarSesionTerapia(ID_sesion);
     }

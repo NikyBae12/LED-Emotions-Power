@@ -11,85 +11,81 @@ public class Multimedia {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer IDElemento;
+    private Integer idElemento;
 
     @Column(nullable = false)
-    private String TipoElemento;
+    private String tipoElemento;
 
     @Column(nullable = false)
-    private String ElementoM;
+    private String elementoM;
 
 
     @Column(name = "Autor")
-    private String Autor;
+    private String autor;
 
     @Column(nullable = false)
-    private Boolean MEstado;
+    private Boolean mEstado;
 
 
-    @OneToMany(mappedBy = "multimedia_rel", fetch = FetchType.LAZY)
-    private Set<EmoMulti> Emo_Multi_rel;
+    @OneToMany(mappedBy = "multimediaRel", fetch = FetchType.LAZY)
+    private Set<EmoMulti> EmoMultiRel;
 
-    public Multimedia(Integer IDElemento, String tipoElemento, String elementoM, String autor, Boolean MEstado) {
-        this.IDElemento = IDElemento;
-        TipoElemento = tipoElemento;
-        ElementoM = elementoM;
-        Autor = autor;
-        this.MEstado = MEstado;
+    public Multimedia(Integer idElemento, String tipoElemento, String elementoM, String autor, Boolean mEstado) {
+        this.idElemento = idElemento;
+        this.tipoElemento = tipoElemento;
+        this.elementoM = elementoM;
+        this.autor = autor;
+        this.mEstado = mEstado;
     }
 
     public Multimedia() {
     }
 
-    public Integer getIDElemento() {
-        return IDElemento;
+    public Integer getIdElemento() {
+        return idElemento;
     }
 
-    public void setIDElemento(Integer IDElemento) {
-        this.IDElemento = IDElemento;
+    public void setIdElemento(Integer idElemento) {
+        this.idElemento = idElemento;
     }
 
     public String getTipoElemento() {
-        return TipoElemento;
+        return tipoElemento;
     }
 
     public void setTipoElemento(String tipoElemento) {
-        TipoElemento = tipoElemento;
+        this.tipoElemento = tipoElemento;
     }
 
     public String getElementoM() {
-        return ElementoM;
+        return elementoM;
     }
 
     public void setElementoM(String elementoM) {
-        ElementoM = elementoM;
+        this.elementoM = elementoM;
     }
 
     public String getAutor() {
-        return Autor;
+        return autor;
     }
 
     public void setAutor(String autor) {
-        Autor = autor;
+        this.autor = autor;
     }
 
-    public Boolean getMEstado() {
-        return MEstado;
+    public Boolean getmEstado() {
+        return mEstado;
     }
 
-    public void setMEstado(Boolean MEstado) {
-        this.MEstado = MEstado;
+    public void setmEstado(Boolean mEstado) {
+        this.mEstado = mEstado;
     }
 
-    @Override
-    public String toString() {
-        return "Multimedia{" +
-                "IDElemento=" + IDElemento +
-                ", TipoElemento='" + TipoElemento + '\'' +
-                ", ElementoM='" + ElementoM + '\'' +
-                ", Autor='" + Autor + '\'' +
-                ", MEstado=" + MEstado +
-                ", Emo_Multi_rel=" + Emo_Multi_rel +
-                '}';
+    public Set<EmoMulti> getEmo_Multi_rel() {
+        return EmoMultiRel;
+    }
+
+    public void setEmo_Multi_rel(Set<EmoMulti> emo_Multi_rel) {
+        EmoMultiRel = emo_Multi_rel;
     }
 }

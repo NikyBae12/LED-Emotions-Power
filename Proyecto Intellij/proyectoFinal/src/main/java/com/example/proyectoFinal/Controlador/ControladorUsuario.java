@@ -27,6 +27,12 @@ public class ControladorUsuario {
         return servi_usu.buscarUsuario(Id_usuario);
     }
 
+    @GetMapping("buscarxCorreo/{correo}")
+    public Usuario buscarUsuarioxCorreo(@PathVariable("correo") String correo){
+        return servi_usu.buscarUsuarioxCorreo(correo);
+
+    }
+
 
     @PostMapping("/agregarUsuario")
     public String agregarUsuario(@RequestBody Usuario usuario){
@@ -34,7 +40,7 @@ public class ControladorUsuario {
     }
 
 
-    @PutMapping("/actuUsuario")
+    @PutMapping("/actualizarUsuario")
     public String ActualizarUsuario(@RequestBody Usuario usuario){
         return servi_usu.actualizarUsuario(usuario);
     }

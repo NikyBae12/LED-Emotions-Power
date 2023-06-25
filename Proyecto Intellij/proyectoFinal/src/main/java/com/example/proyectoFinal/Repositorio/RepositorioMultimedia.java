@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepositorioMultimedia extends JpaRepository<Multimedia, Integer> {
+
 }

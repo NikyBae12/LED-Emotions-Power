@@ -14,40 +14,40 @@ public class ServicioMultimedia {
         this.repositorioMultimedia = repositorioMultimedia;
     }
 
-    public ArrayList<Multimedia> listarElemento(){
+    public ArrayList<Multimedia> listarElementosM(){
         return (ArrayList<Multimedia>) repositorioMultimedia.findAll();
     }
 
-    public Multimedia encontrarElemento(Integer id){
+    public Multimedia buscarElementoM(Integer id){
         return repositorioMultimedia.findById(id).get();
     }
 
-    public String agregarElemento(Multimedia multimedia){
+    public String agregarElementoM(Multimedia multimedia){
 
-        if (repositorioMultimedia.findById(multimedia.getIDElemento()).isPresent()){
-            return "Elemento ya registrado";
+        if (repositorioMultimedia.findById(multimedia.getIdElemento()).isPresent()){
+            return "Elemento Multimedia ya registrado.";
         }else {
             repositorioMultimedia.save(multimedia);
-            return "Elemento registrado con exito";
+            return "Elemento Multimedia registrado con exito.";
         }
     }
 
 
-    public String actualizarElemento(Multimedia multimedia){
-        if (repositorioMultimedia.findById(multimedia.getIDElemento()).isPresent()){
+    public String actualizarElementoM(Multimedia multimedia){
+        if (repositorioMultimedia.findById(multimedia.getIdElemento()).isPresent()){
             repositorioMultimedia.save(multimedia);
-            return "Elemento actuazizado";
+            return "Elemento Multimedia actualizado con exito.";
         }else {
-            return "Este elemento no se encuentra registrado";
+            return "Este elemento multimedia no se encuentra registrado.";
         }
     }
 
-    public String eliminarElemento(Integer id){
+    public String eliminarElementoM(Integer id){
         if (repositorioMultimedia.findById(id).isPresent()){
             repositorioMultimedia.deleteById(id);
-            return "Elemento eliminado con exito";
+            return "Elemento Multimedia eliminado con exito.";
         }else {
-            return "Elemento ya borrado o inexistente";
+            return "Elemento ya eliminado o inexistente.";
         }
     }
 }
