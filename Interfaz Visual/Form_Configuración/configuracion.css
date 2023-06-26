@@ -201,7 +201,6 @@ header{
 
   display: block;
   color: #000000;
-  background-color: white;
   padding: 5px;
   text-decoration: none;
 }
@@ -212,11 +211,10 @@ header{
 
 
 
-
 /*CONTENIDO*/
 
 .contenido {
-    
+    height: 580px;
     background-color: white;
     background-position: center;
     background-repeat: no-repeat;
@@ -228,7 +226,7 @@ header{
 
 .intro {
     width: 85%;
-    padding: 3%;
+    padding: 4%;
     background-color: rgba(156, 156, 156, 0.048);
     border-radius: 15px;
     display: flex;
@@ -240,8 +238,7 @@ header{
 
 
 #intro {
-    width: 50%;
-    margin: 2%;
+    width: 750px;
 }
 
 
@@ -258,17 +255,11 @@ header{
 
 @media screen and (max-width: 760px){
     .body_move{
-        margin-left: 100px;
+        margin-left: 0px;
     }
 
     .menu__side_move{
         width: 80px;
-        
+        left: -80px;
     }
 }
-
-
-
-
-
-
