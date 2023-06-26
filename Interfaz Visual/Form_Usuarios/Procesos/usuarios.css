@@ -212,94 +212,38 @@ header{
 
 
 
-/*FORMULARIO*/
 
-.form{
-    padding-top: 10px;
-    padding-bottom: px;
+/*CONTENIDO*/
+
+.contenido {
+    
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-}
-
-.formulario{
-    height: 110px;
-    background-size: cover;
-
-
-}
-
-.form-registro {
-    width: 800px;
-    background: #f2f1f8;
-    padding: 30px;
-    margin: auto;
-    margin-top: 10px;
-    border-radius: 4px;
-    font-family: 'calibri';
-    color: rgb(16, 16, 16);
-    box-shadow: 7px 13px 37px #000;
-  }
-  
-  .form-registro h4 {
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  
-  .controls {
-    width: 100%;
-    background: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #595b61;
-    font-family: 'calibri';
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-  }
-  
-  .form-registro p {
-    height: 40px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 40px;
-  }
-  
-  .form-registro a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-  }
-  
-  .form-registro a:hover {
-    color: rgb(224, 11, 11);
-    text-decoration: underline;
-  }
-  
-  .form-registro .botons {
-    display: block;
-    width: 150px;
-    margin-top: 40px;
-    padding: 10px 20px;
-    text-align: center;
-    font-weight: 500;
-    background: var(--purpura_pastel);
-    color: white;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 300ms;
-  }
-
-
-  .form-registro .botons:hover{
-    background: transparent;
-    border: 2px solid var(--purpura_pastel) ;
-    color: var(--purpura_pastel);
-  }
-
-  .submit {
     display: flex;
-    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
 
-  }
+.intro {
+    width: 85%;
+    padding: 3%;
+    background-color: rgba(156, 156, 156, 0.048);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+#intro {
+    width: 50%;
+    margin: 2%;
+}
+
 
 /*Clases para usar en JavaScript*/
 
@@ -314,11 +258,11 @@ header{
 
 @media screen and (max-width: 760px){
     .body_move{
-        margin-left: 0px;
+        margin-left: 100px;
     }
 
     .menu__side_move{
         width: 80px;
-        left: -80px;
+        
     }
 }

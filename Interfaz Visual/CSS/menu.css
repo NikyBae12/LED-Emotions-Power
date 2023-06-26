@@ -1,8 +1,7 @@
 /*MENU DESPLEGABLE*/
 
 .icon__menu{
-
-    height: 200%;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,3 +109,5 @@ a.selected{
     top: 10%;
     left: -30px;
 }
+
+

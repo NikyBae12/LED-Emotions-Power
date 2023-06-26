@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="CSS/iniciar.css">
     <link rel="stylesheet" href="CSS/header.css">
 
+    <script src="JS/gestionLogin.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -53,14 +56,15 @@
             <h2>Iniciar Sesión</h2>
             <form>
                 <div class="inputBox">
-                <input type="text" placeholder="Usuario">
+                <input id="correo" type="email" placeholder="Correo de Usuario">
                 </div>
                 <div class="inputBox">
-                <input type="password" placeholder="Contraseña">
+                <input id="contraseña" type="password" placeholder="Contraseña">
                 </div>
                 <div class="inputBox">
-                <input type="submit" value="Iniciar Sesión">
+                <input class="login" type="button" value="Iniciar Sesión">
                 </div>
+                <div id="respuesta"></div>
                 <p class="forget"><a href="#">¿Olvidaste tu contraseña?</a></p>
                 <p class="forget"><a href="registrarse.html">¿No tienes una cuenta?<br>Registrate aquí.</a></p>
             </form>

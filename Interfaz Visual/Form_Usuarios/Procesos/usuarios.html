@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Usuario</title>
+    <title>Gestión Usuarios</title>
 
     <link rel="stylesheet" href="/CSS/menu.css">
-    <link rel="stylesheet" href="buscarUsuario.css">
+    <link rel="stylesheet" href="usuarios.css">
     <link rel="icon" type="image/vnd.microsoft.icon" href="/img/loto333.png" sizes="16x16 24x24 36x36 48x48">
-
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
@@ -39,17 +38,17 @@
 
 
 
-              <div class="dropdown">
+            <div class="dropdown">
                 <a class="btn_gestionar">Gestionar</a>
                 <div class="dropdown-content">
-                    <a href="../Listar/listarUsuario.html">Usuario</a>
-                    <a href="../Buscar/buscarUsuario.html">Buscar</a>
-                    <a href="../Agregar/agregarUsuario.html">Agregar</a>
-                    <a href="../Actualizar/actualizarUsuario.html">Actualizar</a>
-                    <a href="../Eliminar/eliminarUsuario.html">Eliminar</a>
+                    <a href="usuarios.html">Principal</a>
+                    <a href="Listar/listarUsuario.html">Listar Usuarios</a>
+                    <a href="Agregar/agregarUsuario.html">Agregar</a>
+                    <a href="Actualizar/actualizarUsuario.html">Actualizar</a>
+                    <a href="Eliminar/eliminarUsuario.html">Eliminar</a>
 
                 </div>
-              </div>
+            </div>
 
             <a href="/login.html" class="btn_inicio">Cerrar Sesión</a>
 
@@ -123,26 +122,16 @@
 
     </div>
 
-    <main>
+    <section class="contenido">
+        <div class="intro">
+            <h3>GESTIÓN USUARIOS</h3>
+            <h3>Aqui podras gestionar cada cosa importante de la Tabla Usuarios</h3>
+            <p>Da Click en Gestionar para acceder a las funcionalidades del CRUD.</p>
 
-        <div class="form">
-            <div class="formulario">
-                <section class="form-registro">
-                    <h4>Buscar Usuario</h4>
-                    <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
-                    
+            <img id="intro" src="https://inspired360g.com/wp-content/uploads/2020/10/fin.gif" alt="">
+        </div>
+    </section>
 
-                    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-                    
-                    <div class="submit">
-                        <input class="botons" type="submit" id="eliminarUsu" value="BUSCAR">
-                    </div>
-
-                </section>
-            </div>
-        </div>
-    
-    </main>
 
    
     <script src="/JS/scrip.js"></script>

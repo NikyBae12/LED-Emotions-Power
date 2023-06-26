@@ -130,7 +130,7 @@ section .container .from .inputBox input {
 section .container .from .inputBox input::placeholder {
     color: #fff;
 }
-section .container .from .inputBox input[type="submit"] {
+section .container .from .inputBox .login {
     background: #fff;
     color: #666;
     cursor: pointer;
