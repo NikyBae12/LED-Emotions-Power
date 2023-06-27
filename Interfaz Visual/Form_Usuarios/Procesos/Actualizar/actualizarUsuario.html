@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Usuario</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CSS/menu.css">
     <link rel="stylesheet" href="actualizarUsuario.css">
     <link rel="icon" type="image/vnd.microsoft.icon" href="/img/loto333.png" sizes="16x16 24x24 36x36 48x48">
 
 
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    
 </head>
 <body id="body">
     
@@ -133,13 +133,18 @@
                 <h4>Fecha de Nacimiento</h4>
                 <input class="controls" type="date" name="fechaNa" id="fechaNa" placeholder="Ingrese su Fecha Nacimiento">
                 <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
-                <input class="controls" type="text" name="correo" id="correo" placeholder="URL Imagen">                    
+                <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
                 
                 <div class="controls">
-                    <select>
+                    <select id="EstadoCuenta">
                         <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
-                        <option>ACTIVA</option>
-                        <option>INACTIVA</option>
+                            <option>Invitado</option>
+                            <option>Suscrito</option>
+                            <option>MonthLED</option>
+                            <option>Premium</option>
+                            <option>LEDUser</option>
+                            <option>Administrador</option>
+                            <option>Restringido</option>
                     </select>
                 </div>
 
@@ -150,10 +155,8 @@
             </section>
         </div>
     </div>
-
-</main>
-
-   
-    <script src="/JS/scrip.js"></script>
+    
+</main>   
+    <script src="/Form_Usuarios/Procesos/JS/gestionActualizarUsuario.js"></script>      
 </body>
 </html>

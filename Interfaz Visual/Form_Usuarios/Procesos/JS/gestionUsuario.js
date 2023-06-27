@@ -1,136 +1,157 @@
-const tablaUsuarios = document.getElementById('tablaUsuarios');
-        const formAgregarUsuario = document.getElementById('formAgregarUsuario');
+$(document).ready(function(){
 
-        // Función para cargar los usuarios al cargar la página
-        window.onload = function() {
-            cargarUsuarios();
-        };
 
-        // Función para cargar los usuarios desde el servidor
-        function cargarUsuarios() {
-            fetch('/listarUsuarios')
-                .then(response => response.json())
-                .then(usuario => {
-                    tablaUsuarios.innerHTML = ''; // Limpiar la tabla antes de cargar los datos
+    // METODO LISTAR    
+        let tablaUsuarios = document.querySelector('#tablaBody')
+        tablaUsuarios.innerHTML = ''
 
-                    for (let usuario of usuario) {
-                        let row = tablaUsuarios.insertRow();
-                        row.insertCell(0).textContent = usuario.IdUsuario;
-                        row.insertCell(1).textContent = usuario.Nombres;
-                        row.insertCell(2).textContent = usuario.Email;
-                        row.insertCell(3).textContent = usuario.Contraseña;
-                        row.insertCell(4).textContent = usuario.FechaN;
-                        row.insertCell(5).textContent = usuario.CodVerif;
-                        row.insertCell(6).textContent = usuario.imgPerfil;
-                        row.insertCell(7).textContent = usuario.EstadoCuenta;
+        $.ajax({
+            url : "http://localhost:8080/listarUsuarios",
+            type : "GET",
+            datatype : "JSON",
+            success : function (respuesta){
+                console.log(respuesta)
+                
+                
+                for (i = 0; i <= respuesta.length; i++){
+                    tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
+                    '</td><td>' + respuesta[i].nombres +
+                    '</td><td>' + respuesta[i].email + 
+                    '</td><td>' + respuesta[i].contraseña + 
+                    '</td><td>' + respuesta[i].fechaN + 
+                    '</td><td>' + respuesta[i].imgPerfil + 
+                    '</td><td>' + respuesta[i].estadoCuenta + 
+                    '</td></tr>';
+                }
 
+            }
+        });    
+
+
+        // BUSCAR POR CODIGO
+        $('#buscar').on('click', function() {
+            let id = $('#codigo').val();
+            $.ajax({
+                url : "http://localhost:8080/buscarUsuario/" + idUsuarios,
+                type: "GET",
+                datatype: "JSON",
+    
+                success:function(respuesta){
+                    if(respuesta){
+                        console.log(respuesta);
+                        document.querySelector("#txtId").setAttribute('value',respuesta['idUsuarios']);
+                        document.querySelector("#txtId").disabled = true;
+                        document.querySelector("#txtNombres").setAttribute('value',respuesta['nombres']);
+                        document.querySelector("#txtEmail").setAttribute('value',respuesta['email']);
+                        document.querySelector("#txtContraseña").setAttribute('value',respuesta['contraseña']);
+                        document.querySelector("#txtFechaN").setAttribute('value',respuesta['fechaN']);
+                        document.querySelector("#imgPerfil").setAttribute('value',respuesta['imgPerfil']);
+                        document.querySelector("#estadoCuenta").setAttribute('value',respuesta['estadoCuenta']);
+
+                    } else{
+                        alert("El usuario que busca no se encuentra en la Base de Datos, vuelva a intentarlo");
                     }
-                });
+                }
+    
+            })
+    
+        });
+
+
+    // METODO AGREGAR
+    $('#agregar').on('click', function(){
+        
+        let datos = {
+            idUsuarios: ($('#IdUsuario').val()),
+            nombres : $ ('#Nombres').val(),
+            email : $ ('#Email').val(),
+            contraseña : $ ('#Contraseña').val(),
+            fechaN : $ ('#FechaN').val(),
+            imgPerfil : $ ('#imgPerfil').val(), 
+            estadoCuenta : $ ('#EstadoCuenta').val(),   
         }
 
-        // Evento de envío del formulario de agregar usuario
-        formAgregarUsuario.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(formAgregarUsuario);
-            const usuarios = {
-                IdUsuario: formData.get('IdUsuario'),
-                Nombres: formData.get('Nombres'),
-                Email: formData.get('Email'),
-                Contraseña: formData.get('Contraseña'),
-                FechaN: formData.get('FechaN'),
-                CodVerif: formData.get('CodVerif'),
-                imgPerfil: formData.get('imgPerfil'),
-                EstadoCuenta: formData.get('EstadoCuenta')
-
-
-            };
-
-            fetch('/listarUsuarios', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(usuarios)
-            })
-            .then(response => response.json())
-            .then(nuevoEstudiante => {
-                // Limpiar el formulario
-                formAgregarUsuario.reset();
-                // Actualizar la tabla de usuarios
-                cargarUsuarios();
-            });
-        });
+        let datosEnvio = JSON.stringify(datos);
+        $.ajax({
+            url: "http://localhost:8080/agregarUsuario",
+            type :"POST",
+            data: datosEnvio,
+            contentType: "application/JSON",
+            datatype: JSON,
+            success: function(respuesta) {
+                console.log(respuesta);
+            }
+        })
+    });
 
 
 
 
+    //METODO ELIMINAR
+    $('#eliminar').on('click', function(){
 
-         // Eliminar Usuario
-         document.getElementById('eliminarUsu').addEventListener('submit', function(usu) {
-            usu.preventDefault();
-            var IdUsuario = document.getElementById('IdUsuario').value;
 
-            // Realizar solicitud al servidor para eliminar el estudiante
-            fetch('/listarUsuarios/' + IdUsuario, {
-                method: 'DELETE'
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    alert('Usuario eliminado correctamente');
-                    // Actualizar la interfaz de usuario, si es necesario
-                } else {
-                    alert('Error al eliminar el usuario');
-                }
-            })
-            .catch(function(error) {
-                alert('Error de conexión');
-                console.log(error);
-            });
-        });
+        let eliminarUsuario = $('#codigo').val();
 
-        // Actualizar Usuario
-        document.getElementById('actualizarUsu').addEventListener('submit', function(usu) {
-            usu.preventDefault();
-            var IdUsuario = document.getElementById('IdUsuario').value;
-            var Nombres = document.getElementById('Nombres').value;
-            var Email = document.getElementById('Email').value;
-            var Contraseña = document.getElementById('Contraseña').value;
-            var FechaN = document.getElementById('FechaN').value;
-            var CodVerif = document.getElementById('CodVerif').value;
-            var imgPerfil = document.getElementById('imgPerfil').value;
-            var EstadoCuenta = document.getElementById('EstadoCuenta').value;
-
+        $.ajax({
+            url: "http://localhost:8080/eliminarUsuario/" + eliminarUsuario,
+            type: "DELETE",
+            datatype: "JSON",
             
-            var data = {
-                Nombres: Nombres,
-                Email: Email,
-                Contraseña: Contraseña,
-                FechaN: FechaN,
-                CodVerif: CodVerif,
-                imgPerfil: imgPerfil,
-                EstadoCuenta: EstadoCuenta,
+            success: function (respuesta) {
+                alert(respuesta)
+              }
 
-            };
+    });
 
-            // Realizar solicitud al servidor para actualizar el usuario
-            fetch('/listarUsuarios/' + IdUsuario, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    alert('Usuario actualizado correctamente');
-                    // Actualizar la interfaz de usuario, si es necesario
-                } else {
-                    alert('Error al actualizar el usuario');
+    });
+
+
+    // METODO ACTUALIZAR
+
+    $('#actualizar').on('click', function(){
+
+        if ($('#txtNombres').val() != "" && $('#txtEmail').val()!= "" && $('#txtContraseña').val()!= "" && $('#txtFechaN').val() != "" && $('#txtImgPerfil').val()!= "" && $('#txtEstadoCuenta').val() != "" ){
+
+
+            let Usuarios = {
+
+                idUsuarios: $('#txtId').val(),
+                nombres : $ ('#txtNombres').val(),
+                email : $ ('#txtEmail').val(),
+                contraseña : $ ('#txtContraseña').val(),
+                fechaN : $ ('#txtFechaN').val(),
+                imgPerfil : $ ('#txtImgPerfil').val(),
+                estadoCuenta : $ ('#txtEstadoCuenta').val(),
+
+            }
+
+            let actuUsuario = JSON.stringify(Usuarios);
+            console.log(Usuarios)
+            console.log(actuUsuario)
+            $.ajax({
+
+                url: "http://localhost:8080/actuUsuario",
+                type: "PUT",
+                data: actuUsuario,
+                contentType: "application/JSON",
+                datatype: "JSON",
+
+                success: function(response){
+                    alert(response);
                 }
+
             })
-            .catch(function(error) {
-                alert('Error de conexión');
-                console.log(error);
-            });
-        });
+
+        } else {
+            alert("Hay uno o varios campo/s faltante/s, por favor, llene todos los campos.")
+        }
+
+    })
+
+
+
+
+
+
+})
