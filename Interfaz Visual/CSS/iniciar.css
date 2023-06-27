@@ -137,6 +137,15 @@ section .container .from .inputBox .login {
     margin-bottom: 20px;
     font-weight: 600;
 }
+
+section .container .from .inputBox .verifCode {
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
 section .container .from .forget {
     margin-top: 5px;
     color: #fff;

@@ -116,6 +116,12 @@ section .container .from .inputBox {
     width: 100%;
     margin-top: 10px;
 }
+
+section .container .from .inputBox p {
+    font-size: small;
+
+}
+
 section .container .from .inputBox input {
     background: rgba(255, 255, 255, 0.2);
     border: none;
@@ -130,7 +136,7 @@ section .container .from .inputBox input {
 section .container .from .inputBox input::placeholder {
     color: #fff;
 }
-section .container .from .inputBox input[type="submit"] {
+section .container .from .inputBox input[type="button"] {
     background: #fff;
     color: #666;
     cursor: pointer;

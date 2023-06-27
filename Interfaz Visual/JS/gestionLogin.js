@@ -85,8 +85,8 @@ function validarLogIn(usuario, pass){
         if (usuario.contraseña == pass){
             
             if (usuario.estadoCuenta == 'Administrador'){
-                window.location.replace('http://127.0.0.1:5500/principalAdmin.html');
-
+                crearCampoCodigo(usuario, campoVal);
+                
             } else {
                 window.location.replace("http://127.0.0.1:5500/principalUser.html");
 
@@ -108,6 +108,48 @@ function validarLogIn(usuario, pass){
         respuesta.textContent = "Usuario no existente.";
         campoVal.appendChild(respuesta);
 
+    }
+
+}
+
+function crearCampoCodigo(usuario, campoVali){
+    let btnSpace = document.querySelector('#btnInicio');
+    btnSpace.innerHTML = '';
+    let btnInicio = document.createElement('input');
+    btnInicio.setAttribute('class', 'verifCode');
+    btnInicio.setAttribute('type', 'button');
+    btnInicio.setAttribute('value', 'Verificar Código');
+    btnSpace.appendChild(btnInicio);
+    
+    let codigoVerif = document.querySelector('#codeSpace');
+    let inputCode = document.createElement('input');
+    inputCode.setAttribute('id', 'codigoVer');
+    inputCode.setAttribute('type', 'number');
+    inputCode.setAttribute('placeholder', 'Código de Verificación')
+    codigoVerif.appendChild(inputCode);
+
+    $('.verifCode').on('click', function(){
+        validarCodigo(usuario, inputCode, campoVali)
+
+    })
+
+}
+
+
+
+function validarCodigo(usuario, inputCode, campoVal){
+    let codigoVerif = inputCode.value;
+    
+    if (codigoVerif == usuario.codVerif){
+        window.location.replace('http://127.0.0.1:5500/principalAdmin.html');
+
+    } else {
+        campoVal.innerHTML = '';
+        let respuesta = document.createElement("p");
+        respuesta.style.color = 'red';
+        respuesta.textContent = "Código de Verificación Incorrecto.";
+        campoVal.appendChild(respuesta);
+        
     }
 
 }
