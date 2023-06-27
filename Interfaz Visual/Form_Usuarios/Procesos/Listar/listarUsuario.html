@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Usuarios</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CSS/menu.css">
     <link rel="stylesheet" href="listarUsuario.css">
     
@@ -136,7 +137,7 @@
                         <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
                         
                         <div class="submit">
-                            <input class="botons" type="submit" id="eliminarUsu" value="BUSCAR">
+                            <input class="botons" type="submit" id="listarUsu" value="BUSCAR">
                         </div>
     
                     </section>
@@ -157,12 +158,15 @@
                         <th>ESTADO DE CUENTA</th>
                     </tr> 
                 </thead> 
+                <tbody id="tablaBody">
+
+                </tbody>
 
             </table>
     
     </main>
 
    
-    <script src="/JS/scrip.js"></script>
+    <script src="/Form_Usuarios/Procesos/JS/gestionUsuario.js"></script>
 </body>
 </html>
