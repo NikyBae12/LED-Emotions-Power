@@ -11,7 +11,7 @@
     <link rel="icon" type="image/vnd.microsoft.icon" href="/img/loto333.png" sizes="16x16 24x24 36x36 48x48">
 
 
-    
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 <body id="body">
     
@@ -122,11 +122,13 @@
 
     </div>
 
+    <main>
     <div class="form">
         <div class="formulario">
             <section class="form-registro">
                 <h4>Actualizar Usuario</h4>
-                <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
+                <select name="id" id="id" class="controls"></select>
+                <input class="controls" type="number" name="idUser" id="idUser" placeholder="Id Usuario" disabled>
                 <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese los Nombres">
                 <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
                 <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
@@ -135,28 +137,25 @@
                 <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
                 <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
                 
-                <div class="controls">
-                    <select id="EstadoCuenta">
-                        <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
-                            <option>Invitado</option>
-                            <option>Suscrito</option>
-                            <option>MonthLED</option>
-                            <option>Premium</option>
-                            <option>LEDUser</option>
-                            <option>Administrador</option>
-                            <option>Restringido</option>
-                    </select>
-                </div>
-
-                <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+                <select id="EstadoCuenta" class="controls">
+                    <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
+                        <option>Invitado</option>
+                        <option>Suscrito</option>
+                        <option>MonthLED</option>
+                        <option>Premium</option>
+                        <option>LEDUser</option>
+                        <option>Administrador</option>
+                        <option>Restringido</option>
+                </select>
                 <div class="submit">
                     <input class="botons" type="submit" id="actualizarUsu" value="ACTUALIZAR">
                 </div>
             </section>
         </div>
-    </div>
+    </div>
     
 </main>   
-    <script src="/Form_Usuarios/Procesos/JS/gestionActualizarUsuario.js"></script>      
+    <script src="/Form_Usuarios/Procesos/JS/gestionActualizarUsuario.js"></script>  
+    <script src="/JS/scrip.js"></script>    
 </body>
 </html>

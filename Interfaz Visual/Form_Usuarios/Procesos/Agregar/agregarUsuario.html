@@ -135,25 +135,21 @@
                     <input class="controls" type="email" name="Email" id="Email" placeholder="Ingrese su Correo">
                     <input class="controls" type="password" name="Contraseña" id="Contraseña" placeholder="Ingrese su Contraseña">
                     <h4>Fecha de Nacimiento</h4>
-                    <input class="controls" type="date" name="FechaN" id="FechaN" placeholder="Ingrese su Fecha Nacimiento">
+                    <input class="controls" type="date" name="FechaN" id="FechaN">
                     <input class="controls" type="number" name="CodVerif" id="CodVerif" placeholder="Ingrese el Codigo de Verificación">
                     <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
                     
-                    <div class="controls">
-                        <select id="EstadoCuenta">
-                            <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
-                            <option>Invitado</option>
-                            <option>Suscrito</option>
-                            <option>MonthLED</option>
-                            <option>Premium</option>
-                            <option>LEDUser</option>
-                            <option>Administrador</option>
-                            <option>Restringido</option>
-                        </select>
-                    </div>
+                    <select id="EstadoCuenta" class="controls">
+                        <option value="">Estado de Cuenta</option>
+                        <option value="Invitado">Invitado</option>
+                        <option value="Suscrito">Suscrito</option>
+                        <option value="MonthLED">MonthLED</option>
+                        <option value="Premium">Premium</option>
+                        <option value="LEDUser">LEDUser</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
 
-                    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-                    <div class="">
+                    <div>
                         <input class="botons" type="submit" value="AGREGAR" id="agregar">
 
                     </div>
@@ -165,5 +161,6 @@
 
    
     <script src="/Form_Usuarios/Procesos/JS/gestionAgregarUsuario.js"></script>
+    <script src="/JS/scrip.js"></script>
 </body>
 </html>

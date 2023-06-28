@@ -12,7 +12,7 @@
     
     <link rel="icon" type="image/vnd.microsoft.icon" href="/img/loto333.png" sizes="16x16 24x24 36x36 48x48">
 
-
+    <script src="/Form_Usuarios/Procesos/JS/gestionUsuario.js" defer></script>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 <body id="body">
@@ -125,48 +125,62 @@
 
     </div>
 
-        <main>
+    <main>
+        <h1 >Listado de Usuarios</h1>
+        <div class="form">
+            <div class="formulario">
+                <section class="form-registro">
+                    <h4>Buscar x ID</h4>
+                    <input class="controls" type="number" name="id" id="id" placeholder="Ingrese el ID">
 
-            <div class="form">
-                <div class="formulario">
-                    <section class="form-registro">
-                        <h4>Buscar Usuario</h4>
-                        <input class="controls" type="text" name="id" id="id" placeholder="Ingrese el ID">
-                        
-    
-                        <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-                        
-                        <div class="submit">
-                            <input class="botons" type="submit" id="listarUsu" value="BUSCAR">
-                        </div>
-    
-                    </section>
-                </div>
-            </div>
+                </section>
+                <section class="form-registro">
+                    <h4>Buscar x Correo</h4>
+                    <input class="controls" type="text" name="correo" id="correo" placeholder="Ingrese el Correo">
 
-            <h1 >Listado de Usuarios</h1>
-            <table class="styled-table" id="tablaUsuarios"> 
-                <thead> 
-                    <tr> 
-                        <th>ID USUARIO</th>
-                        <th>NOMBRES</th>
-                        <th>EMAIL</th>
-                        <th>CONTRASEÑA</th>
-                        <th>FECHA DE NACIMIENTO</th>
-                        <th>CODIGO DE VERIFICACION</th>
-                        <th>IMG DE PERFIL</th>
-                        <th>ESTADO DE CUENTA</th>
-                    </tr> 
-                </thead> 
-                <tbody id="tablaBody">
+                </section>
+                <section class="form-registro">
+                    <h4>Buscar x Estado</h4>
+                    <select class="controls" id="estado" name="estado">
+                        <option value="">Estado de Cuenta</option>
+                        <option value="Invitado">Invitado</option>
+                        <option value="Suscrito">Suscrito</option>
+                        <option value="MonthLED">MonthLED</option>
+                        <option value="Premium">Premium</option>
+                        <option value="LEDUser">LEDUser</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Restringido">Restringido</option>
+                    </select>
 
-                </tbody>
+                </section>
+            </div>
+        </div>
 
-            </table>
+        <div>
+            
+        </div>
+        <table class="styled-table" id="tablaUsuarios"> 
+            <thead> 
+                <tr> 
+                    <th>ID USUARIO</th>
+                    <th>NOMBRES</th>
+                    <th>EMAIL</th>
+                    <th>CONTRASEÑA</th>
+                    <th>FECHA DE NACIMIENTO</th>
+                    <th>CODIGO DE VERIFICACION</th>
+                    <th>IMG DE PERFIL</th>
+                    <th>ESTADO DE CUENTA</th>
+                </tr> 
+            </thead> 
+            <tbody id="tablaBody">
+
+            </tbody>
+
+        </table>
     
     </main>
 
    
-    <script src="/Form_Usuarios/Procesos/JS/gestionUsuario.js"></script>
+    <script src="/JS/scrip.js"></script>
 </body>
 </html>

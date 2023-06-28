@@ -119,6 +119,7 @@ section .container .from .inputBox {
 
 section .container .from .inputBox p {
     font-size: small;
+    text-align: center;
 
 }
 

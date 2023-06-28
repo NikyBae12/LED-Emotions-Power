@@ -9,17 +9,21 @@
 }
 
 body{
-    margin-left: 80px;
-    margin-top: 80px;
-    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    padding-left: 80px;
+    padding-top: 80px;
+    transition: padding-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 main{
-    padding: 20px;
+    padding: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+main h1 {
+  margin-top: 2%;
 }
 
 
@@ -31,6 +35,7 @@ header{
     height: 100px;
     background: white;
     display: flex;
+    border-bottom: 1px solid rgb(226, 226, 226);
     align-items: center;
     position: fixed;
     top: 0;
@@ -185,7 +190,6 @@ header{
   background-color: #ffffff;
   padding-left: 10px;
   display: block;
-  padding: 8px 20px;
   border-radius: 8px;
   font-weight: 500;
   margin: 0px 20px;
@@ -194,7 +198,6 @@ header{
   
   display: none;
   position: absolute;
-  width: 8%;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
@@ -220,21 +223,21 @@ header{
 
 
 .form{
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 5%;
   background-size: cover;
 }
 
 .formulario{
-  background-size: cover;
-
+  display: flex;
+  justify-content: space-around;
 
 }
 
 .form-registro {
-  width: 800px;
   background: #f2f1f8;
-  padding: 30px;
+  padding: 20px;
   margin: auto;
   margin-top: 10px;
   border-radius: 4px;
@@ -309,12 +312,12 @@ header{
 /*Tabla de Usuarios*/
 
 .styled-table { 
+  width: 100%;
   border-collapse: collapse; 
   margin: 25px 0; 
-  font-size: 1em; 
-  font-family: sans-serif; 
-  min-width: 30px; 
-  box-shadow: 0 0 20px rgba(184, 31, 31, 0.15).15; 
+  font-size: medium; 
+  font-family: sans-serif;  
+
 }
 
 .styled-table thead tr { 
@@ -325,17 +328,16 @@ header{
 
 .styled-table th, .styled-table td { 
   padding: 12px 15px; 
+  width: fit-content;
 }
 
 .styled-table tbody tr { 
   border-bottom: 1px solid #dddddd; 
 } 
+
 .styled-table tbody tr:nth-of-type(even) { 
-  background-color: #f3f3f3; 
+  background-color: #b9b9b9; 
 } 
-.styled-table tbody tr:last-of-type { 
-  border-bottom: 2px solid #009879; 
-}
 
 
 
@@ -344,7 +346,7 @@ header{
 /*Clases para usar en JavaScript*/
 
 .body_move{
-    margin-left: 250px;
+    padding-left: 250px;
 }
 
 .menu__side_move{
@@ -356,6 +358,7 @@ header{
     .body_move{
         margin-left: 0px;
     }
+
 
     .menu__side_move{
         width: 80px;

@@ -23,7 +23,7 @@ public class ServicioUsuario {
 
 
     public Usuario buscarUsuario(String Id_usuario){
-        return repoUsuario.findById(Id_usuario).get();
+        return repoUsuario.findByIdUsuario(Id_usuario);
     }
 
     public Usuario buscarUsuarioxCorreo(String correo) {

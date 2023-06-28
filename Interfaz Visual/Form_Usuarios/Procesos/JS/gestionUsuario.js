@@ -1,157 +1,66 @@
+let tablaUsuarios = document.querySelector('#tablaBody');
+tablaUsuarios.innerHTML = '';
+let filtroId = document.querySelector('#id');
+let filtroCorreo = document.querySelector('#correo');
+let filtroEstado = document.querySelector('#estado');
+filtroId.addEventListener('input', listarUsuarios);
+filtroCorreo.addEventListener('input', listarUsuarios);
+filtroEstado.addEventListener('change', listarUsuarios);
+
 $(document).ready(function(){
 
 
     // METODO LISTAR    
-        let tablaUsuarios = document.querySelector('#tablaBody')
-        tablaUsuarios.innerHTML = ''
 
         $.ajax({
             url : "http://localhost:8080/listarUsuarios",
             type : "GET",
+            async: false,
             datatype : "JSON",
             success : function (respuesta){
-                console.log(respuesta)
-                
-                
-                for (i = 0; i <= respuesta.length; i++){
+                console.log(respuesta);
+
+                for (let i = 0; i < respuesta.length; i++) {
                     tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
                     '</td><td>' + respuesta[i].nombres +
                     '</td><td>' + respuesta[i].email + 
                     '</td><td>' + respuesta[i].contraseña + 
                     '</td><td>' + respuesta[i].fechaN + 
+                    '</td><td>' + respuesta[i].codVerif +
                     '</td><td>' + respuesta[i].imgPerfil + 
                     '</td><td>' + respuesta[i].estadoCuenta + 
                     '</td></tr>';
+                    
                 }
 
             }
-        });    
-
-
-        // BUSCAR POR CODIGO
-        $('#buscar').on('click', function() {
-            let id = $('#codigo').val();
-            $.ajax({
-                url : "http://localhost:8080/buscarUsuario/" + idUsuarios,
-                type: "GET",
-                datatype: "JSON",
-    
-                success:function(respuesta){
-                    if(respuesta){
-                        console.log(respuesta);
-                        document.querySelector("#txtId").setAttribute('value',respuesta['idUsuarios']);
-                        document.querySelector("#txtId").disabled = true;
-                        document.querySelector("#txtNombres").setAttribute('value',respuesta['nombres']);
-                        document.querySelector("#txtEmail").setAttribute('value',respuesta['email']);
-                        document.querySelector("#txtContraseña").setAttribute('value',respuesta['contraseña']);
-                        document.querySelector("#txtFechaN").setAttribute('value',respuesta['fechaN']);
-                        document.querySelector("#imgPerfil").setAttribute('value',respuesta['imgPerfil']);
-                        document.querySelector("#estadoCuenta").setAttribute('value',respuesta['estadoCuenta']);
-
-                    } else{
-                        alert("El usuario que busca no se encuentra en la Base de Datos, vuelva a intentarlo");
-                    }
-                }
-    
-            })
-    
-        });
-
-
-    // METODO AGREGAR
-    $('#agregar').on('click', function(){
-        
-        let datos = {
-            idUsuarios: ($('#IdUsuario').val()),
-            nombres : $ ('#Nombres').val(),
-            email : $ ('#Email').val(),
-            contraseña : $ ('#Contraseña').val(),
-            fechaN : $ ('#FechaN').val(),
-            imgPerfil : $ ('#imgPerfil').val(), 
-            estadoCuenta : $ ('#EstadoCuenta').val(),   
-        }
-
-        let datosEnvio = JSON.stringify(datos);
-        $.ajax({
-            url: "http://localhost:8080/agregarUsuario",
-            type :"POST",
-            data: datosEnvio,
-            contentType: "application/JSON",
-            datatype: JSON,
-            success: function(respuesta) {
-                console.log(respuesta);
-            }
-        })
-    });
-
-
-
-
-    //METODO ELIMINAR
-    $('#eliminar').on('click', function(){
-
-
-        let eliminarUsuario = $('#codigo').val();
-
-        $.ajax({
-            url: "http://localhost:8080/eliminarUsuario/" + eliminarUsuario,
-            type: "DELETE",
-            datatype: "JSON",
-            
-            success: function (respuesta) {
-                alert(respuesta)
-              }
-
-    });
-
-    });
-
-
-    // METODO ACTUALIZAR
-
-    $('#actualizar').on('click', function(){
-
-        if ($('#txtNombres').val() != "" && $('#txtEmail').val()!= "" && $('#txtContraseña').val()!= "" && $('#txtFechaN').val() != "" && $('#txtImgPerfil').val()!= "" && $('#txtEstadoCuenta').val() != "" ){
-
-
-            let Usuarios = {
-
-                idUsuarios: $('#txtId').val(),
-                nombres : $ ('#txtNombres').val(),
-                email : $ ('#txtEmail').val(),
-                contraseña : $ ('#txtContraseña').val(),
-                fechaN : $ ('#txtFechaN').val(),
-                imgPerfil : $ ('#txtImgPerfil').val(),
-                estadoCuenta : $ ('#txtEstadoCuenta').val(),
-
-            }
-
-            let actuUsuario = JSON.stringify(Usuarios);
-            console.log(Usuarios)
-            console.log(actuUsuario)
-            $.ajax({
-
-                url: "http://localhost:8080/actuUsuario",
-                type: "PUT",
-                data: actuUsuario,
-                contentType: "application/JSON",
-                datatype: "JSON",
-
-                success: function(response){
-                    alert(response);
-                }
-
-            })
-
-        } else {
-            alert("Hay uno o varios campo/s faltante/s, por favor, llene todos los campos.")
-        }
-
-    })
-
-
-
-
-
+        }); 
 
 })
+
+function listarUsuarios(){
+    let valId = filtroId.value;
+    let valCorreo = filtroCorreo.value;
+    let valEstado = filtroEstado.value;
+    
+    for (let i = 0; i < tablaUsuarios.rows.length; i++) {
+        var fila = tablaUsuarios.rows[i];
+
+        var id = fila.cells[0].textContent.toLowerCase();
+        var correo = fila.cells[2].textContent.toLowerCase();
+        var estado = fila.cells[7].textContent;
+
+        if (id.includes(valId) && correo.includes(valCorreo) && estado.includes(valEstado)){
+            fila.style.display = '';
+
+        } else {
+            fila.style.display = 'none';
+
+        }
+        
+        
+    }
+
+    
+
+}

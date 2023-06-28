@@ -29,6 +29,7 @@ header{
     display: flex;
     align-items: center;
     position: fixed;
+    border-bottom: 1px solid rgb(226, 226, 226);
     top: 0;
     z-index: 200;
 }
@@ -215,8 +216,7 @@ header{
 /*FORMULARIO*/
 
 .form{
-    padding-top: 10px;    
-    padding-bottom: px;
+    margin-top: 3%;
     background-size: cover;
 }
 
@@ -276,16 +276,20 @@ header{
   .form-registro .botons {
     display: block;
     width: 150px;
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 10px 20px;
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
+    font-size: medium;
     background: var(--purpura_pastel);
     color: white;
     border-radius: 10px;
     border: 2px solid transparent;
     cursor: pointer;
     transition: all 300ms;
+    margin-left: 280px;
+
+    
   }
 
 

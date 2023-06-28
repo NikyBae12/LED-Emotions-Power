@@ -9,8 +9,8 @@
 }
 
 body{
-    margin-left: 80px;
-    margin-top: 80px;
+    padding-left: 80px;
+    padding-top: 80px;
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -248,21 +248,22 @@ header{
 /*Clases para usar en JavaScript*/
 
 .body_move{
-    margin-left: 250px;
+  padding-left: 250px;
 }
 
 .menu__side_move{
-    width: 250px;
+  width: 250px;
 }
 
 
 @media screen and (max-width: 760px){
-    .body_move{
-        margin-left: 100px;
-    }
+  .body_move{
+      margin-left: 0px;
+  }
 
-    .menu__side_move{
-        width: 80px;
-        
-    }
+
+  .menu__side_move{
+      width: 80px;
+      left: -80px;
+  }
 }

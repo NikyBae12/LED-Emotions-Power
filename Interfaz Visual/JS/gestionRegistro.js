@@ -2,6 +2,9 @@ $(document).ready(function(){
 
     let date = new Date().toISOString().slice(0, 10);
     document.querySelector('#fechaN').setAttribute('max', date);
+    let divRegistrar = document.querySelector('#divRegistrar');
+    let validacionNull = document.createElement('p');
+    divRegistrar.appendChild(validacionNull);
 
     $('#registrar').on('click', function(){
         
@@ -12,21 +15,40 @@ $(document).ready(function(){
         let confirmacion = $('#confirmacion').val();
         let fechaNa = $('#fechaN').val();
 
-        let usuario = {
-            idUsuarios: documento,
-            nombres: nombre,
-            email: email,
-            contraseña: confirmacion,
-            fechaN: fechaNa,
-            estadoCuenta: 'Invitado'
 
-        }
+        if (documento != '' && nombre != '' && email != '' && contraseña != '' && confirmacion != '' && fechaNa != ''){
+            validacionNull.textContent = "";
+    
+            if (validarRegistro(documento, email, contraseña, confirmacion) >= 6){
+                
+                let usuario = {
+                    idUsuario: documento,
+                    nombres: nombre,
+                    email: email,
+                    contraseña: confirmacion,
+                    fechaN: fechaNa,
+                    estadoCuenta: 'Invitado'
+        
+                }
 
-        if (validarRegistro(documento, email, contraseña, confirmacion) == 5){
-            alert('Si se pudo');
+                let datosUsuario = JSON.stringify(usuario);
+                $.ajax({
+                    url: "http://localhost:8080/agregarUsuario",
+                    type :"POST",
+                    data: datosUsuario,
+                    contentType: "application/JSON",
+                    datatype: JSON,
+                    success: function(respuesta) {
+                        validarRegistroResponse(respuesta);
+                    }
+                })
+    
+            }
 
         } else {
-            alert('Send help')
+            validacionNull.style.color = 'red';
+            validacionNull.textContent = "Campos Vacios. Por favor, llena todos los campos.";
+
         }
         
 
@@ -36,23 +58,42 @@ $(document).ready(function(){
 
 
 /*FUNCIONES ADICIONALES */
+function validarDocumentoDB(documento){
+    var valDoc = false;
+
+    $.ajax({
+        url: "http://localhost:8080/buscarUsuario/" + documento,
+        type: "GET",
+        datatype: "JSON",
+        async: false,
+        success: function(respuesta){
+            valDoc = respuesta == '';
+        }
+
+    })
+
+    return valDoc;
+
+}
+
 
 function validarEmailDB(email){
-
-    divCorreo.appendChild(validacionCorreo);
-    validacionCorreo.style.textAlign = 'center';
-    validacionCorreo.style.color = 'red';
+    var usuario = false;
 
     $.ajax({
         url: "http://localhost:8080/buscarxCorreo/" + email,
         type: "GET",
         datatype: "JSON",
+        async: false,
         success: function(respuesta){
-            return respuesta;
+ 
+            usuario = respuesta == '';
 
         }
 
     })
+
+    return usuario;
 
 }
 
@@ -80,9 +121,7 @@ function validarDocumento(documento){
 
 }
 
-
-function validarRegistro(documento, email, contraseña, confirmacion){
-    let divDocumento = document.querySelector('#divDocumento');
+let divDocumento = document.querySelector('#divDocumento');
     let validacionDocumento = document.createElement("p");
     divDocumento.appendChild(validacionDocumento);
 
@@ -98,11 +137,23 @@ function validarRegistro(documento, email, contraseña, confirmacion){
     let validacionConf = document.createElement("p");
     divConfirmacion.appendChild(validacionConf);
 
+
+function validarRegistro(documento, email, contraseña, confirmacion){
+ 
     contador = 0;
 
     if(validarDocumento(documento)){
         contador++;
-        validacionDocumento.textContent = '';
+
+        if(validarDocumentoDB(documento)){
+            contador++;
+            validacionDocumento.textContent = '';
+
+        } else {
+            validacionDocumento.style.color = 'red';
+            validacionDocumento.textContent = "Documento ya registrado.";
+
+        }
 
     } else {
         validacionDocumento.style.color = 'red';
@@ -112,16 +163,18 @@ function validarRegistro(documento, email, contraseña, confirmacion){
 
     if(validarEmail(email)){
         contador++;
-        validacionCorreo.textContent = '';
 
         if(validarEmailDB(email)){
             contador++;
             validacionCorreo.textContent = '';
-
+            
+    
         } else {
+            
             validacionCorreo.style.color = 'red';
             validacionCorreo.textContent = "Correo ya registrado.";
-
+            
+    
         }
 
     } else {
@@ -140,7 +193,7 @@ function validarRegistro(documento, email, contraseña, confirmacion){
 
     }
 
-    if (validarConfirmacion(confirmacion)){
+    if (validarConfirmacion(contraseña, confirmacion)){
         contador++;
         validacionConf.textContent = '';
 
@@ -151,5 +204,16 @@ function validarRegistro(documento, email, contraseña, confirmacion){
     }
 
     return contador;
+
+}
+
+
+function validarRegistroResponse(response){
+
+    alert(response);
+    if (response == 'Usuario registrado exitosamente.'){
+        
+        window.location.replace('http://127.0.0.1:5500/login.html');
+    } 
 
 }
