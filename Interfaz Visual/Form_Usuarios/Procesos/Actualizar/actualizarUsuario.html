@@ -127,32 +127,97 @@
         <div class="formulario">
             <section class="form-registro">
                 <h4>Actualizar Usuario</h4>
-                <select name="id" id="id" class="controls"></select>
-                <input class="controls" type="number" name="idUser" id="idUser" placeholder="Id Usuario" disabled>
-                <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese los Nombres">
-                <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-                <input class="controls" type="password" name="contraseña" id="contraseña" placeholder="Ingrese su Contraseña">
-                <h4>Fecha de Nacimiento</h4>
-                <input class="controls" type="date" name="fechaNa" id="fechaNa" placeholder="Ingrese su Fecha Nacimiento">
-                <input class="controls" type="number" name="codigoVeri" id="codigoVeri" placeholder="Ingrese el Codigo de Verificación">
-                <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
                 
-                <select id="EstadoCuenta" class="controls">
-                    <option>¿CUAL ES EL ESTADO DE LA CUENTA?</option>
-                        <option>Invitado</option>
-                        <option>Suscrito</option>
-                        <option>MonthLED</option>
-                        <option>Premium</option>
-                        <option>LEDUser</option>
-                        <option>Administrador</option>
-                        <option>Restringido</option>
+                <input class="controls" type="number" name="IdUsuario" id="IdUsuario" placeholder="Ingrese el Documento" disabled required>
+                <p id="valDocumento"></p>
+                <input class="controls" type="text" name="Nombres" id="Nombres" placeholder="Ingrese los Nombres" required>
+                <p></p>
+                <input class="controls" type="email" name="Email" id="Email" placeholder="Ingrese el Correo" required>
+                <p id="valEmail"></p>
+                <input class="controls" type="password" name="Contraseña" id="Contraseña" placeholder="Ingrese la Contraseña" required>
+                <p id="valContraseña"></p>
+                <input class="controls" type="password" name="Confir" id="Confir" placeholder="Ingrese de nuevo la Contraseña" required>
+                <p id="valConfir"></p>
+                
+                <h4>Fecha de Nacimiento</h4>                          
+                <input class="controls" type="date" name="FechaN" id="FechaN" required>
+                <p></p>
+                <input class="controls" type="text" name="CodVerif" id="CodVerif" placeholder="Ingrese el Codigo de Verificación" maxlength="10">
+                <p id="valCodigo"></p>
+                <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
+                <p></p>
+                <select id="EstadoCuenta" class="controls" required>
+                    <option value="">Estado de Cuenta</option>
+                    <option value="Invitado">Invitado</option>
+                    <option value="Suscrito">Suscrito</option>
+                    <option value="MonthLED">MonthLED</option>
+                    <option value="Premium">Premium</option>
+                    <option value="LEDUser">LEDUser</option>
+                    <option value="Administrador">Administrador</option>
                 </select>
+                <p id="valTipoUser"></p>
+                <p id="valNull"></p>
+
                 <div class="submit">
                     <input class="botons" type="submit" id="actualizarUsu" value="ACTUALIZAR">
                 </div>
             </section>
         </div>
     </div>
+
+    <h1 >Listado de Usuarios</h1>
+        <div class="form2">
+            <div class="formulario2">
+                <section class="form-registro2">
+                    <h4>Buscar x ID</h4>
+                    <input class="controls" type="number" name="idBusqueda" id="idBusqueda" placeholder="Ingrese el ID">
+
+                </section>
+                <section class="form-registro2">
+                    <h4>Buscar x Correo</h4>
+                    <input class="controls" type="text" name="correo" id="correo" placeholder="Ingrese el Correo">
+
+                </section>
+                <section class="form-registro2">
+                    <h4>Buscar x Estado</h4>
+                    <select class="controls" id="estado" name="estado">
+                        <option value="">Estado de Cuenta</option>
+                        <option value="Invitado">Invitado</option>
+                        <option value="Suscrito">Suscrito</option>
+                        <option value="MonthLED">MonthLED</option>
+                        <option value="Premium">Premium</option>
+                        <option value="LEDUser">LEDUser</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Restringido">Restringido</option>
+                    </select>
+
+                </section>
+            </div>
+        </div>
+
+        <div>
+            
+        </div>
+        <table class="styled-table" id="tablaUsuarios"> 
+            <thead> 
+                <tr> 
+                    <th>ID USUARIO</th>
+                    <th>NOMBRES</th>
+                    <th>EMAIL</th>
+                    <th>CONTRASEÑA</th>
+                    <th>FECHA DE NACIMIENTO</th>
+                    <th>CODIGO DE VERIFICACION</th>
+                    <th>ESTADO DE CUENTA</th>
+                    <th>ACCIÓN</th>
+                    <th>IMG DE PERFIL</th>
+                </tr> 
+                
+            </thead> 
+            <tbody id="tablaBody">
+
+            </tbody>
+
+        </table>
     
 </main>   
     <script src="/Form_Usuarios/Procesos/JS/gestionActualizarUsuario.js"></script>  

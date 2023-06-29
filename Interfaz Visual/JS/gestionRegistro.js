@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     let date = new Date().toISOString().slice(0, 10);
     document.querySelector('#fechaN').setAttribute('max', date);
-    let divRegistrar = document.querySelector('#divRegistrar');
+    let divRegistrar = document.querySelector('#divNull');
     let validacionNull = document.createElement('p');
     divRegistrar.appendChild(validacionNull);
 
@@ -46,7 +46,8 @@ $(document).ready(function(){
             }
 
         } else {
-            validacionNull.style.color = 'red';
+            validacionNull.style.color = 'white';
+            validacionNull.style.fontSize = 'small';
             validacionNull.textContent = "Campos Vacios. Por favor, llena todos los campos.";
 
         }

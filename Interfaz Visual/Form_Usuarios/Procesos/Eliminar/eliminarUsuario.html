@@ -125,21 +125,59 @@
 
     <main>
 
-        <div class="form">
-            <div class="formulario">
-                <section class="form-registro">
-                    <h4>Eliminar Usuario</h4>
-                    <select name="id" id="id" class="controls"></select>
-                    <input class="controls" type="text" name="idUser" id="idUser" placeholder="Ingrese el ID" disabled>
-                    
-                    
-                    <div class="submit">
-                        <input class="botons" type="submit" id="eliminarUsu" value="ELIMINAR">
-                    </div>
+    <h1 >Eliminar o Desactivar Usuarios</h1>
+    <div class="form2">
+        <div class="formulario2">
+            <section class="form-registro2">
+                <h4>Buscar x ID</h4>
+                <input class="controls" type="number" name="idBusqueda" id="idBusqueda" placeholder="Ingrese el ID">
 
-                </section>
-            </div>
-        </div>
+            </section>
+            <section class="form-registro2">
+                <h4>Buscar x Correo</h4>
+                <input class="controls" type="text" name="correo" id="correo" placeholder="Ingrese el Correo">
+
+            </section>
+            <section class="form-registro2">
+                <h4>Buscar x Estado</h4>
+                <select class="controls" id="estado" name="estado">
+                    <option value="">Estado de Cuenta</option>
+                    <option value="Invitado">Invitado</option>
+                    <option value="Suscrito">Suscrito</option>
+                    <option value="MonthLED">MonthLED</option>
+                    <option value="Premium">Premium</option>
+                    <option value="LEDUser">LEDUser</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Restringido">Restringido</option>
+                </select>
+
+            </section>
+        </div>
+    </div>
+
+    <div>
+        
+    </div>
+    <table class="styled-table" id="tablaUsuarios"> 
+        <thead> 
+            <tr> 
+                <th>ID USUARIO</th>
+                <th>NOMBRES</th>
+                <th>EMAIL</th>
+                <th>CONTRASEÑA</th>
+                <th>FECHA DE NACIMIENTO</th>
+                <th>CODIGO DE VERIFICACION</th>
+                <th>ESTADO DE CUENTA</th>
+                <th>ACCIÓN</th>
+                <th>IMG DE PERFIL</th>
+            </tr> 
+            
+        </thead> 
+        <tbody id="tablaBody">
+
+        </tbody>
+
+    </table>
     
     </main>
 

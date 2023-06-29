@@ -130,16 +130,25 @@
             <div class="formulario" id="formAgregarUsuario">
                 <section class="form-registro">
                     <h4>Agregar Usuario</h4>
-                    <input class="controls" type="text" name="IdUsuario" id="IdUsuario" placeholder="Ingrese el ID">
-                    <input class="controls" type="text" name="Nombres" id="Nombres" placeholder="Ingrese los Nombres">
-                    <input class="controls" type="email" name="Email" id="Email" placeholder="Ingrese su Correo">
-                    <input class="controls" type="password" name="Contraseña" id="Contraseña" placeholder="Ingrese su Contraseña">
-                    <h4>Fecha de Nacimiento</h4>
-                    <input class="controls" type="date" name="FechaN" id="FechaN">
-                    <input class="controls" type="number" name="CodVerif" id="CodVerif" placeholder="Ingrese el Codigo de Verificación">
-                    <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
+                    <input class="controls" type="number" name="IdUsuario" id="IdUsuario" placeholder="Ingrese el Documento" required>
+                    <p id="valDocumento"></p>
+                    <input class="controls" type="text" name="Nombres" id="Nombres" placeholder="Ingrese los Nombres" required>
+                    <p></p>
+                    <input class="controls" type="email" name="Email" id="Email" placeholder="Ingrese el Correo" required>
+                    <p id="valEmail"></p>
+                    <input class="controls" type="password" name="Contraseña" id="Contraseña" placeholder="Ingrese la Contraseña" required>
+                    <p id="valContraseña"></p>
+                    <input class="controls" type="password" name="Confir" id="Confir" placeholder="Ingrese de nuevo la Contraseña" required>
+                    <p id="valConfir"></p>
                     
-                    <select id="EstadoCuenta" class="controls">
+                    <h4>Fecha de Nacimiento</h4>                          
+                    <input class="controls" type="date" name="FechaN" id="FechaN" required>
+                    <p></p>
+                    <input class="controls" type="text" name="CodVerif" id="CodVerif" placeholder="Ingrese el Codigo de Verificación" maxlength="10">
+                    <p id="valCodigo"></p>
+                    <input class="controls" type="text" name="imgPerfil" id="imgPerfil" placeholder="URL Imagen">                    
+                    <p></p>
+                    <select id="EstadoCuenta" class="controls" required>
                         <option value="">Estado de Cuenta</option>
                         <option value="Invitado">Invitado</option>
                         <option value="Suscrito">Suscrito</option>
@@ -148,9 +157,10 @@
                         <option value="LEDUser">LEDUser</option>
                         <option value="Administrador">Administrador</option>
                     </select>
-
+                    <p id="valTipoUser"></p>
+                    <p id="valNull"></p>
                     <div>
-                        <input class="botons" type="submit" value="AGREGAR" id="agregar">
+                        <input class="botons" type="button" value="AGREGAR" id="agregar">
 
                     </div>
                 </section>

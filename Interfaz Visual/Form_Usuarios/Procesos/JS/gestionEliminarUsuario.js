@@ -1,34 +1,98 @@
 let selectUsers = document.querySelector('#id');
+let tablaUsuarios = document.querySelector('#tablaBody');
+tablaUsuarios.innerHTML = '';
+let filtroId = document.querySelector('#idBusqueda');
+let filtroCorreo = document.querySelector('#correo');
+let filtroEstado = document.querySelector('#estado');
+filtroId.addEventListener('input', listarUsuarios);
+filtroCorreo.addEventListener('input', listarUsuarios);
+filtroEstado.addEventListener('change', listarUsuarios);
 
 $(document).ready(function(){
-    consultarUsers();
-    selectUsers.addEventListener('change', listarUsuarioForm);
+    listarTabla();
 
     // METODO ELIMINAR
-    $('#eliminarUsu').on('click', function(){
-        let eliminarUsuario = $('#idUser').val();
-
-        // Mostrar alerta de confirmación
-        if (confirm("¿Estás seguro de eliminar este registro?")) {
-            $.ajax({
-                url: "http://127.0.0.1:8080/eliminarUsuario/" + eliminarUsuario,
-                type: "DELETE",
-                datatype: "JSON",
-                success: function (respuesta) {
-                    alert(respuesta);
-                }
-            });
-        } else {
-            alert('No se elimino el usuario.')
-
-        }
+    $('.btnEliminar').on('click', function(){
+        
+        eliminarUser(this);
+        location.reload();
+        
     });
+
+    // METODO ACTIVAR
+    $('.btnActivar').on('click', function(){
+        
+        cambiarEstadoU(this);
+        location.reload();
+        
+    });
+
+    // METODO ACTIVAR
+    $('.btnDesactivar').on('click', function(){
+        
+        cambiarEstadoU(this);
+        location.reload();
+        
+    });
+
+    
 });
 
 
+function eliminarUser(boton){
 
-function consultarUsers(){
-    selectUsers.innerHTML = "<option value=''>Selecciona un Usuario</option>"
+    let id = boton.getAttribute('id');
+
+    if (confirm("¿Estás seguro de eliminar este registro?")) {
+        $.ajax({
+            url: "http://127.0.0.1:8080/eliminarUsuario/" + id,
+            type: "DELETE",
+            datatype: "JSON",
+            success: function (respuesta) {
+                alert(respuesta);
+            }
+        });
+    } else {
+        alert('No se elimino el usuario.')
+
+    }
+
+}
+
+function cambiarEstadoU(boton){
+
+    let tipoUser = '';
+    let id = boton.getAttribute('id');
+
+    if (boton.getAttribute('value') == 'Activar'){
+        tipoUser = 'Invitado';
+    } else {
+        tipoUser = 'Restringido';
+    }
+
+    if (confirm("¿Estás seguro de " + boton.getAttribute('value') +" este registro?")) {
+        $.ajax({
+            url: "http://127.0.0.1:8080/actualizarEstadoUsuario/" + tipoUser + "/" + id,
+            type: "PUT",
+            datatype: "JSON",
+            success: function (respuesta) {
+                alert(respuesta);
+            }
+        });
+    } else {
+        alert('No se ' + boton.getAttribute('value') +' el usuario.');
+
+    }
+
+
+}
+
+
+
+function listarTabla(){
+
+
+    // METODO LISTAR    
 
     $.ajax({
         url : "http://localhost:8080/listarUsuarios",
@@ -36,10 +100,26 @@ function consultarUsers(){
         async: false,
         datatype : "JSON",
         success : function (respuesta){
-
+            let inputBtn = '';
+            
             for (let i = 0; i < respuesta.length; i++) {
-                selectUsers.innerHTML += "<option value='" + respuesta[i].idUsuario +"'>" + respuesta[i].idUsuario + " - " + respuesta[i].nombres + "</option>";
-                                        
+                if (respuesta[i].estadoCuenta == 'Restringido'){
+                    inputBtn = '<input type="button" class="btnActivar" id="' + respuesta[i].idUsuario + '" value="Activar">' + '<input type="button" class="btnEliminar" id="' + respuesta[i].idUsuario + '" value="Eliminar">';
+                } else {
+                    inputBtn = '<input type="button" class="btnDesactivar" id="' + respuesta[i].idUsuario + '" value="Desactivar">';
+                }
+
+                tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
+                '</td><td>' + respuesta[i].nombres +
+                '</td><td>' + respuesta[i].email + 
+                '</td><td>' + respuesta[i].contraseña + 
+                '</td><td>' + respuesta[i].fechaN + 
+                '</td><td>' + respuesta[i].codVerif +
+                '</td><td>' + respuesta[i].estadoCuenta + 
+                '</td><td>' + inputBtn + 
+                '</td><td>' + respuesta[i].imgPerfil + 
+                '</td></tr>';
+                
             }
 
         }
@@ -48,25 +128,29 @@ function consultarUsers(){
 }
 
 
-function listarUsuarioForm(){
-
-    let userSeleccionado = selectUsers.value;
-
-    if (userSeleccionado != ''){
-        $.ajax({
-            url: "http://localhost:8080/buscarUsuario/" + userSeleccionado,
-            type: "GET",
-            datatype: "JSON",
-            async: false,
-            success: function(respuesta){
-
-                document.querySelector('#idUser').setAttribute('value', respuesta.idUsuario);
-            }
+function listarUsuarios(){
+    let valId = filtroId.value;
+    let valCorreo = filtroCorreo.value;
+    let valEstado = filtroEstado.value;
     
-        })
+    for (let i = 0; i < tablaUsuarios.rows.length; i++) {
+        var fila = tablaUsuarios.rows[i];
 
-    } else {
-        document.querySelector('#idUser').setAttribute('value', '');
+        var id = fila.cells[0].textContent.toLowerCase();
+        var correo = fila.cells[2].textContent.toLowerCase();
+        var estado = fila.cells[6].textContent;
+
+        if (id.includes(valId) && correo.includes(valCorreo) && estado.includes(valEstado)){
+            fila.style.display = '';
+
+        } else {
+            fila.style.display = 'none';
+
+        }
+        
+        
     }
+
+    
 
 }

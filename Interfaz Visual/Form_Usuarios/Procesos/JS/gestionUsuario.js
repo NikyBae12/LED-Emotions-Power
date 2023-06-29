@@ -12,29 +12,28 @@ $(document).ready(function(){
 
     // METODO LISTAR    
 
-        $.ajax({
-            url : "http://localhost:8080/listarUsuarios",
-            type : "GET",
-            async: false,
-            datatype : "JSON",
-            success : function (respuesta){
-                console.log(respuesta);
+    $.ajax({
+        url : "http://localhost:8080/listarUsuarios",
+        type : "GET",
+        async: false,
+        datatype : "JSON",
+        success : function (respuesta){
 
-                for (let i = 0; i < respuesta.length; i++) {
-                    tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
-                    '</td><td>' + respuesta[i].nombres +
-                    '</td><td>' + respuesta[i].email + 
-                    '</td><td>' + respuesta[i].contraseña + 
-                    '</td><td>' + respuesta[i].fechaN + 
-                    '</td><td>' + respuesta[i].codVerif +
-                    '</td><td>' + respuesta[i].imgPerfil + 
-                    '</td><td>' + respuesta[i].estadoCuenta + 
-                    '</td></tr>';
-                    
-                }
-
+            for (let i = 0; i < respuesta.length; i++) {
+                tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
+                '</td><td>' + respuesta[i].nombres +
+                '</td><td>' + respuesta[i].email + 
+                '</td><td>' + respuesta[i].contraseña + 
+                '</td><td>' + respuesta[i].fechaN + 
+                '</td><td>' + respuesta[i].codVerif +
+                '</td><td>' + respuesta[i].estadoCuenta + 
+                '</td><td>' + respuesta[i].imgPerfil + 
+                '</td></tr>';
+                
             }
-        }); 
+
+        }
+    }); 
 
 })
 
@@ -48,7 +47,7 @@ function listarUsuarios(){
 
         var id = fila.cells[0].textContent.toLowerCase();
         var correo = fila.cells[2].textContent.toLowerCase();
-        var estado = fila.cells[7].textContent;
+        var estado = fila.cells[6].textContent;
 
         if (id.includes(valId) && correo.includes(valCorreo) && estado.includes(valEstado)){
             fila.style.display = '';

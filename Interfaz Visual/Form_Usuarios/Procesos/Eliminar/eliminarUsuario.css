@@ -15,7 +15,16 @@ body{
 }
 
 main{
-    padding: 20px;
+  padding: 2%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main h1 {
+  margin-top: 2%;
 }
 
 
@@ -29,6 +38,7 @@ header{
     display: flex;
     align-items: center;
     position: fixed;
+    border-bottom: 1px solid rgb(226, 226, 226);
     top: 0;
     z-index: 200;
 }
@@ -190,7 +200,6 @@ header{
   
   display: none;
   position: absolute;
-  width: 8%;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
@@ -212,98 +221,194 @@ header{
 
 
 
-/*FORMULARIO*/
+  /*FORMULARIO BUSQUEDA Y TABLA*/
 
-.form{
-    padding-top: 10px;
-    padding-bottom: px;
-    background-size: cover;
+.form2{
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 5%;
+  background-size: cover;
 }
 
-.formulario{
-    height: 110px;
-    background-size: cover;
-
+.formulario2{
+  display: flex;
+  justify-content: space-around;
 
 }
 
-.form-registro {
-    width: 800px;
-    background: #f2f1f8;
-    padding: 30px;
-    margin: auto;
-    margin-top: 10px;
-    border-radius: 4px;
-    font-family: 'calibri';
-    color: rgb(16, 16, 16);
-    box-shadow: 7px 13px 37px #000;
-  }
-  
-  .form-registro h4 {
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  
-  .controls {
-    width: 100%;
-    background: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #595b61;
-    font-family: 'calibri';
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-  }
-  
-  .form-registro p {
-    height: 40px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 40px;
-  }
-  
-  .form-registro a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-  }
-  
-  .form-registro a:hover {
-    color: rgb(224, 11, 11);
-    text-decoration: underline;
-  }
-  
-  .form-registro .botons {
-    display: block;
-    width: 150px;
-    margin-top: 20px;
-    padding: 10px 20px;
-    text-align: center;
-    font-weight: bold;
-    font-size: medium;
-    background: var(--purpura_pastel);
-    color: white;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 300ms;
-    margin-left: 280px;
+.form-registro2 {
+  background: #f2f1f8;
+  padding: 20px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: rgb(16, 16, 16);
+  box-shadow: 7px 13px 37px #000;
+}
 
-    
-  }
+.form-registro2 h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.form-registro2 .controls {
+  width: 100%;
+  background: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #595b61;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+}
+
+.form-registro2 p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-registro2 a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.form-registro2 a:hover {
+  color: rgb(224, 11, 11);
+  text-decoration: underline;
+}
+
+.form-registro2 .botons {
+  display: block;
+  width: 150px;
+  margin-top: 40px;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 500;
+  background: var(--purpura_pastel);
+  color: white;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 300ms;
+}
 
 
-  .form-registro .botons:hover{
-    background: transparent;
-    border: 2px solid var(--purpura_pastel) ;
-    color: var(--purpura_pastel);
-  }
+.form-registro2 .botons:hover{
+  background: transparent;
+  border: 2px solid var(--purpura_pastel) ;
+  color: var(--purpura_pastel);
+}
 
-  .submit {
-    display: flex;
-    flex-direction:row;
 
-  }
+
+/*Tabla de Usuarios*/
+
+.styled-table { 
+  width: 100%;
+  display: block;
+  border-collapse: collapse; 
+  margin: 25px 0; 
+  font-size: 1rem; 
+  font-family: sans-serif;  
+
+}
+
+.styled-table thead tr { 
+  background-color: #3d9deb7e; 
+  color: #ffffff; 
+  text-align: middle; 
+}
+
+.styled-table th, .styled-table td { 
+  padding: 12px 15px; 
+  width: fit-content;
+}
+
+.styled-table tbody tr { 
+  border-bottom: 1px solid #dddddd; 
+} 
+
+.styled-table tbody tr:nth-of-type(even) { 
+  background-color: #b9b9b9; 
+} 
+
+.btnEliminar {
+  display: block;
+  width: 120px;
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  background: #e25252;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 300ms;
+  margin-top: 10px;
+  
+}
+
+.btnActivar {
+  display: block;
+  width: 120px;
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  background: #4da559;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 300ms;
+  margin-top: 10px;
+
+  
+}
+
+.btnDesactivar {
+  display: block;
+  width: 120px;
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: small;
+  background: #4d9fa5;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 300ms;
+  
+}
+
+.btnEliminar:hover{
+  background: transparent;
+  border: 2px solid #e25252 ;
+  color: #e25252;
+}
+
+.btnActivar:hover{
+  background: transparent;
+  border: 2px solid #4da559 ;
+  color: #4da559;
+}
+
+.btnDesactivar:hover{
+  background: transparent;
+  border: 2px solid #4d9fa5 ;
+  color: #4d9fa5;
+}
+
+
+
+
+
 
 /*Clases para usar en JavaScript*/
 

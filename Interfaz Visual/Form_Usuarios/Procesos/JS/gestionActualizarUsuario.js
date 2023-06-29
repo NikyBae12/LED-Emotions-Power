@@ -1,43 +1,90 @@
-let selectUsers = document.querySelector('#id');
+let tablaUsuarios = document.querySelector('#tablaBody');
+tablaUsuarios.innerHTML = '';
+let filtroId = document.querySelector('#idBusqueda');
+let filtroCorreo = document.querySelector('#correo');
+let filtroEstado = document.querySelector('#estado');
+filtroId.addEventListener('input', listarUsuarios);
+filtroCorreo.addEventListener('input', listarUsuarios);
+filtroEstado.addEventListener('change', listarUsuarios);
+
+let validacionDocumento = document.querySelector('#valDocumento');
+let validacionCorreo = document.querySelector('#valEmail');
+let validacionPass = document.querySelector('#valContraseña');
+let validacionConf = document.querySelector('#valConfir');
+let validacionTipoUser = document.querySelector('#valTipoUser');
+let validacionNull = document.querySelector('#valNull');
+let validacionCodigo = document.querySelector('#valCodigo');
 
 $(document).ready(function(){
-    consultarUsers();
-    selectUsers.addEventListener('change', listarUsuarioForm);
-
-    // METODO ACTUALIZAR
-    $('#actualizarUsu').on('click', function(){
+    listarTabla();
+    let date = new Date().toISOString().slice(0, 10);
+    document.querySelector('#FechaN').setAttribute('max', date);
     
-            let Usuarios = {
-                idUsuario: $('#idUser').val(),
-                nombres: $('#nombres').val(),
-                email: $('#correo').val(),
-                contraseña : $('#contraseña').val(),
-                fechaN: $('#fechaNa').val(),
-                imgPerfil: $('#imgPerfil').val(),
-                codVerif: $('#codigoVeri').val(),
-                estadoCuenta: $('#EstadoCuenta').val(),
-            }
+    $('#actualizarUsu').on('click', function(){
 
-            let actuUsuario = JSON.stringify(Usuarios);
-
-            $.ajax({
-                url: "http://127.0.0.1:8080/actualizarUsuario",
-                type: "PUT",
-                data: actuUsuario,
-                contentType: "application/JSON",
-                datatype: "JSON",
-
-                success: function(response){
-                    alert(response);
-                    location.reload();
+        let idUsuario= $('#IdUsuario').val();
+        let nombres = $('#Nombres').val();
+        let email = $('#Email').val();
+        let contraseña = $('#Contraseña').val();
+        let confirmacion = $('#Confir').val();
+        let fechaN = $('#FechaN').val();
+        let codVerif= $('#CodVerif').val();
+        let imgPerfil = $('#imgPerfil').val(); 
+        let estadoCuenta = $('#EstadoCuenta').val(); 
+        
+        validarNull();
+        if (idUsuario != '' && nombres != '' && email != '' && contraseña != '' && confirmacion != '' && fechaN != '' && estadoCuenta != ''){
+            validacionNull.textContent = '';
+            if (validarCode(estadoCuenta, codVerif) && validarRegistro(idUsuario, email, contraseña, confirmacion) >= 3){
+                
+                if(confirm("¿Estás seguro de actualizar este Usuario?")){
+                    let Usuarios = {
+                        idUsuario: idUsuario,
+                        nombres : nombres,
+                        email : email,
+                        contraseña : contraseña,
+                        fechaN : fechaN,
+                        codVerif: codVerif,
+                        imgPerfil : imgPerfil, 
+                        estadoCuenta : estadoCuenta,   
+                    }
+        
+                    let actuUsuario = JSON.stringify(Usuarios);
+        
+                    $.ajax({
+                        url: "http://127.0.0.1:8080/actualizarUsuario",
+                        type: "PUT",
+                        data: actuUsuario,
+                        contentType: "application/JSON",
+                        datatype: "JSON",
+        
+                        success: function(response){
+                            alert(response);
+                            location.reload();
+                        }
+                    })
+                } else {
+                    alert('No se actualizo el usuario.')
                 }
-            })
+
+            }
+    
+        } else {
+            validacionNull.textContent = "Campos Vacios. Por favor, llena todos los campos.";  
+        }
+    
+        
     })
+
 })
 
 
-function consultarUsers(){
-    selectUsers.innerHTML = "<option value=''>Selecciona un Usuario</option>"
+
+
+function listarTabla(){
+
+
+    // METODO LISTAR    
 
     $.ajax({
         url : "http://localhost:8080/listarUsuarios",
@@ -46,53 +93,198 @@ function consultarUsers(){
         datatype : "JSON",
         success : function (respuesta){
 
+
             for (let i = 0; i < respuesta.length; i++) {
-                selectUsers.innerHTML += "<option value='" + respuesta[i].idUsuario +"'>" + respuesta[i].idUsuario + " - " + respuesta[i].nombres + "</option>";
-                                        
+                tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
+                '</td><td>' + respuesta[i].nombres +
+                '</td><td>' + respuesta[i].email + 
+                '</td><td>' + respuesta[i].contraseña + 
+                '</td><td>' + respuesta[i].fechaN + 
+                '</td><td>' + respuesta[i].codVerif +
+                '</td><td>' + respuesta[i].estadoCuenta + 
+                '</td><td> <input type="button" class="btnListar" id="' + respuesta[i].idUsuario + '" value="Listar">' + 
+                '</td><td>' + respuesta[i].imgPerfil + 
+                '</td></tr>';
+                
             }
+            listarUsuarioForm();
 
         }
     }); 
 
 }
 
+function listarUsuarios(){
+    let valId = filtroId.value;
+    let valCorreo = filtroCorreo.value;
+    let valEstado = filtroEstado.value;
+    
+    for (let i = 0; i < tablaUsuarios.rows.length; i++) {
+        var fila = tablaUsuarios.rows[i];
+
+        var id = fila.cells[0].textContent.toLowerCase();
+        var correo = fila.cells[2].textContent.toLowerCase();
+        var estado = fila.cells[6].textContent;
+
+        if (id.includes(valId) && correo.includes(valCorreo) && estado.includes(valEstado)){
+            fila.style.display = '';
+
+        } else {
+            fila.style.display = 'none';
+
+        }
+        
+        
+    }
+
+    
+
+}
+
+
 
 
 function listarUsuarioForm(){
 
-    let userSeleccionado = selectUsers.value;
+    $('.btnListar').on('click', function(){
 
-    if (userSeleccionado != ''){
+        let btnId = this.getAttribute('id');
+
         $.ajax({
-            url: "http://localhost:8080/buscarUsuario/" + userSeleccionado,
+            url: "http://localhost:8080/buscarUsuario/" + btnId,
             type: "GET",
             datatype: "JSON",
             async: false,
             success: function(respuesta){
 
-                document.querySelector('#idUser').setAttribute('value', respuesta.idUsuario);
-                document.querySelector('#nombres').setAttribute('value', respuesta.nombres);
-                document.querySelector('#correo').setAttribute('value', respuesta.email);
-                document.querySelector('#contraseña').setAttribute('value', respuesta.contraseña);
-                document.querySelector('#fechaNa').setAttribute('value', respuesta.fechaN);
-                document.querySelector('#codigoVeri').setAttribute('value', respuesta.codVerif);
+                document.querySelector('#IdUsuario').setAttribute('value', respuesta.idUsuario);
+                document.querySelector('#Nombres').setAttribute('value', respuesta.nombres);
+                document.querySelector('#Email').setAttribute('value', respuesta.email);
+                document.querySelector('#Contraseña').setAttribute('value', respuesta.contraseña);
+                document.querySelector('#Confir').setAttribute('value', respuesta.contraseña);
+                document.querySelector('#FechaN').setAttribute('value', respuesta.fechaN);
+                document.querySelector('#CodVerif').setAttribute('value', respuesta.codVerif);
                 document.querySelector('#imgPerfil').setAttribute('value', respuesta.imgPerfil);
                 document.querySelector('#EstadoCuenta').value = respuesta.estadoCuenta;
-    
+
             }
-    
-        })
+
+    })
+
+    })
+
+}
+
+
+
+/*VALIDAR FORMULARIO ACTUALIZAR*/
+
+function validarNull(){
+    let datos = document.querySelectorAll('.controls:required');
+    datos.forEach(valor => {
+        if(valor.value == ''){
+            valor.setAttribute('style', 'border-color: red;');
+        } else {
+            valor.setAttribute('style', 'border-color: #595b61;');
+        }                       
+    });
+
+}
+
+/*FUNCIONES ADICIONALES */
+
+function validarEmail(email){
+
+    var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+    return emailRegex.test(email);
+
+}
+
+function validarContraseña(contraseña){
+
+    return contraseña.length > 8;
+ 
+}
+
+function validarConfirmacion(contraseña, confirmacion){
+    return confirmacion == contraseña;
+
+}
+
+
+function validarRegistro(documento, email, contraseña, confirmacion){
+ 
+    contador = 0;
+
+    if(validarEmail(email)){
+        contador++;
+        validacionCorreo.textContent = '';
 
     } else {
-        document.querySelector('#idUser').setAttribute('value', '');
-        document.querySelector('#nombres').setAttribute('value', '');
-        document.querySelector('#correo').setAttribute('value', '');
-        document.querySelector('#contraseña').setAttribute('value', '');
-        document.querySelector('#fechaNa').setAttribute('value', '');
-        document.querySelector('#codigoVeri').setAttribute('value', '');
-        document.querySelector('#imgPerfil').setAttribute('value', '');
-        document.querySelector('#EstadoCuenta').value = '¿CUAL ES EL ESTADO DE LA CUENTA?';
+
+        validacionCorreo.textContent = "Correo no Valido.";
+        document.querySelector('#Email').setAttribute('style', 'border-color: red;');
 
     }
+
+    if (validarContraseña(contraseña)){
+        contador++;
+        validacionPass.textContent = '';
+        document.querySelector('#Contraseña').setAttribute('style', 'border-color: #595b61;');
+
+    } else {
+ 
+        validacionPass.textContent = "Contraseña Invalida";
+        document.querySelector('#Contraseña').setAttribute('style', 'border-color: red;');
+
+
+    }
+
+    if (validarConfirmacion(contraseña, confirmacion)){
+        contador++;
+        validacionConf.textContent = '';
+        document.querySelector('#Confir').setAttribute('style', 'border-color: #595b61;');
+
+    } else {
+
+        validacionConf.textContent = "Las contraseñas no coinciden.";
+        document.querySelector('#Confir').setAttribute('style', 'border-color: red;');
+
+    }
+
+    return contador;
+
+}
+
+function validarCode(tipoUser, codigoVer){
+    let estado = true;
+    if (tipoUser == 'Administrador'){
+        estado = codigoVer != '';
+
+        if (estado){
+            validacionCodigo.textContent = '';
+            document.querySelector('#CodVerif').setAttribute('style', 'border-color: #595b61;');
+
+        } else {
+
+            validacionCodigo.textContent = '*Campo obligatorio para Administrador';
+            document.querySelector('#CodVerif').setAttribute('style', 'border-color: red;');
+        }
+
+    }
+
+    return estado;
+
+}
+
+
+function validarRegistroResponse(response){
+
+    alert(response);
+    if (response == 'Usuario registrado exitosamente.'){
+        
+        location.reload();
+    } 
 
 }

@@ -158,3 +158,10 @@ section .container form .forget a {
     cursor: pointer;
     text-decoration: none;
 }
+
+#respuesta p{
+    margin-left: 3%;
+    font-size: small;
+    color: white;
+
+}

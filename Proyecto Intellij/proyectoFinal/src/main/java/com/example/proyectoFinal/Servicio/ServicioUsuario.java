@@ -2,6 +2,8 @@ package com.example.proyectoFinal.Servicio;
 
 
 import com.example.proyectoFinal.Entidad.Usuario;
+import com.example.proyectoFinal.Repositorio.RepositorioComprobante;
+import com.example.proyectoFinal.Repositorio.RepositorioSesionTerapia;
 import com.example.proyectoFinal.Repositorio.RepositorioUsuario;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,14 @@ public class ServicioUsuario {
 
     private RepositorioUsuario repoUsuario;
 
-    public ServicioUsuario(RepositorioUsuario repoUsuario) {
+    private RepositorioComprobante repoComprobante;
+
+    private RepositorioSesionTerapia repoSesionTerapia;
+
+    public ServicioUsuario(RepositorioUsuario repoUsuario, RepositorioComprobante repoComprobante, RepositorioSesionTerapia repoSesionTerapia) {
         this.repoUsuario = repoUsuario;
+        this.repoComprobante = repoComprobante;
+        this.repoSesionTerapia = repoSesionTerapia;
     }
 
     public ArrayList<Usuario> listarUsuarios(){
@@ -58,6 +66,7 @@ public class ServicioUsuario {
         if (repoUsuario.findById(usuario.getIdUsuario()).isPresent()){
 
             usuario.setEstadoCuenta(tipoUser);
+            repoUsuario.save(usuario);
             return "Tipo de Usuario actualizado con exito.";
 
         } else {
@@ -69,12 +78,20 @@ public class ServicioUsuario {
 
     public String eliminarUsuario(String Id_usuario){
 
-        if (repoUsuario.findById(Id_usuario).isPresent()){
-            repoUsuario.deleteById(Id_usuario);
-            return "Usuario eliminado con exito.";
+        if (repoComprobante.FindComprobantesxUsuario(Id_usuario).isEmpty() && repoSesionTerapia.FindSesionesxUsuario(Id_usuario).isEmpty()){
+            if (repoUsuario.findById(Id_usuario).isPresent()){
+                repoUsuario.deleteById(Id_usuario);
+                return "Usuario eliminado con exito.";
+
+            }else {
+                return "Usuario no encontrado.";
+            }
 
         }else {
-            return "Usuario no encontrado.";
+            return "Este usuario esta vinculado con otras entidades y solo se puede desactivar.";
+
         }
+
+
     }
 }

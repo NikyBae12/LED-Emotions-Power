@@ -14,7 +14,6 @@ $(document).ready(function(){
                 type: "GET",
                 datatype: "JSON",
                 success: function(respuesta){
-                    console.log(respuesta);
                     validarLogIn(respuesta, contraseña);
 
                 }
@@ -59,7 +58,6 @@ function validarDatos(email, contraseña){
         } else {
             campoVal.innerHTML = '';
             let respuesta = document.createElement("p");
-            respuesta.style.color = 'red';
             respuesta.textContent = "Correo no valido.";
             campoVal.appendChild(respuesta);
             
@@ -69,7 +67,6 @@ function validarDatos(email, contraseña){
     } else {
         campoVal.innerHTML = '';
         let respuesta = document.createElement("p");
-        respuesta.style.color = 'red';
         respuesta.textContent = "Campos Vacios. Por favor, llena todos los campos.";
         campoVal.appendChild(respuesta);
 
@@ -95,7 +92,6 @@ function validarLogIn(usuario, pass){
         } else {
             campoVal.innerHTML = '';
             let respuesta = document.createElement("p");
-            respuesta.style.color = 'red';
             respuesta.textContent = "Contraseña Incorrecta.";
             campoVal.appendChild(respuesta);
 
@@ -104,7 +100,6 @@ function validarLogIn(usuario, pass){
     } else {
         campoVal.innerHTML = '';
         let respuesta = document.createElement("p");
-        respuesta.style.color = 'red';
         respuesta.textContent = "Usuario no existente.";
         campoVal.appendChild(respuesta);
 
@@ -124,12 +119,12 @@ function crearCampoCodigo(usuario, campoVali){
     let codigoVerif = document.querySelector('#codeSpace');
     let inputCode = document.createElement('input');
     inputCode.setAttribute('id', 'codigoVer');
-    inputCode.setAttribute('type', 'number');
+    inputCode.setAttribute('type', 'text');
     inputCode.setAttribute('placeholder', 'Código de Verificación')
     codigoVerif.appendChild(inputCode);
 
     $('.verifCode').on('click', function(){
-        validarCodigo(usuario, inputCode, campoVali)
+        validarCodigo(usuario, inputCode, campoVali);
 
     })
 
@@ -146,7 +141,6 @@ function validarCodigo(usuario, inputCode, campoVal){
     } else {
         campoVal.innerHTML = '';
         let respuesta = document.createElement("p");
-        respuesta.style.color = 'red';
         respuesta.textContent = "Código de Verificación Incorrecto.";
         campoVal.appendChild(respuesta);
         

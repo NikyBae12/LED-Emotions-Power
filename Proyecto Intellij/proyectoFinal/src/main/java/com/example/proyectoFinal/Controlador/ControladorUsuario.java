@@ -46,6 +46,10 @@ public class ControladorUsuario {
         return servi_usu.actualizarUsuario(usuario);
     }
 
+    @PutMapping("actualizarEstadoUsuario/{tipoUser}/{documento}")
+    public String ActualizarEstadoUsuario(@PathVariable("tipoUser") String TipoUser, @PathVariable("documento") String documento){
+        return servi_usu.actualizarTipoUsuario(TipoUser, documento);
+    }
 
     @DeleteMapping("/eliminarUsuario/{Id_usuario}")
     public String eliminarUsuario(@PathVariable("Id_usuario") String Id_usuario){

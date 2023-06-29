@@ -21,6 +21,8 @@ main{
 }
 
 
+
+
 :root{
     --purpura_pastel: #6d50e1;
 }
@@ -193,7 +195,6 @@ header{
   
   display: none;
   position: absolute;
-  width: 8%;
   overflow: auto;
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
@@ -225,7 +226,7 @@ header{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
+    display: block;
     justify-content: center;
     margin: 3%;
 }
@@ -249,6 +250,12 @@ header{
     box-shadow: 7px 13px 37px #000;
 
   }
+
+  .form-registro p {
+    margin-bottom: 10px;
+    font-size: small;
+    color: red;
+  }
   
   .form-registro h4 {
     font-size: 22px;
@@ -260,18 +267,11 @@ header{
     background: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 5px;
     border: 1px solid #595b61;
     font-family: 'calibri';
     font-size: 18px;
     color: rgb(0, 0, 0);
-  }
-  
-  .form-registro p {
-    height: 40px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 40px;
   }
   
   .form-registro a {
@@ -304,6 +304,8 @@ header{
   }
 
 
+
+
   .form-registro .botons:hover{
     background: transparent;
     border: 2px solid var(--purpura_pastel) ;
@@ -312,12 +314,6 @@ header{
   }
 
 
-
-  .submit {
-    display: flex;
-    flex-direction:row;
-
-  }
 
 /*Clases para usar en JavaScript*/
 

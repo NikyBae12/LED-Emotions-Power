@@ -313,9 +313,10 @@ header{
 
 .styled-table { 
   width: 100%;
+  display: block;
   border-collapse: collapse; 
   margin: 25px 0; 
-  font-size: medium; 
+  font-size: 1rem; 
   font-family: sans-serif;  
 
 }

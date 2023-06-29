@@ -21,7 +21,6 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
     background-color: linear-gradient(to bottom, #f1f4f9, #dff1ff);
 }
 section .color {
@@ -84,7 +83,7 @@ section .box .square:nth-child(5) {
 section .container {
     position: relative;
     width: 400px;
-    min-height: 600px;
+    padding: 5%;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
@@ -96,6 +95,7 @@ section .container {
 section .container form {
     position: relative;
     padding: 20px;
+
 }
 section .container .from h2 {
     position: relative;
@@ -156,3 +156,5 @@ section .container form .forget a {
     cursor: pointer;
     text-decoration: none;
 }
+
+
