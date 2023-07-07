@@ -117,6 +117,7 @@ function crearCampoCodigo(usuario, campoVali){
     btnSpace.appendChild(btnInicio);
     
     let codigoVerif = document.querySelector('#codeSpace');
+    codigoVerif.innerHTML = '';
     let inputCode = document.createElement('input');
     inputCode.setAttribute('id', 'codigoVer');
     inputCode.setAttribute('type', 'text');

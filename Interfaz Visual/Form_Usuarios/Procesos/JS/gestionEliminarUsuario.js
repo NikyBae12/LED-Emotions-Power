@@ -15,7 +15,7 @@ $(document).ready(function(){
     $('.btnEliminar').on('click', function(){
         
         eliminarUser(this);
-        location.reload();
+        
         
     });
 
@@ -23,7 +23,6 @@ $(document).ready(function(){
     $('.btnActivar').on('click', function(){
         
         cambiarEstadoU(this);
-        location.reload();
         
     });
 
@@ -31,7 +30,6 @@ $(document).ready(function(){
     $('.btnDesactivar').on('click', function(){
         
         cambiarEstadoU(this);
-        location.reload();
         
     });
 
@@ -50,6 +48,7 @@ function eliminarUser(boton){
             datatype: "JSON",
             success: function (respuesta) {
                 alert(respuesta);
+                location.reload();
             }
         });
     } else {
@@ -77,6 +76,7 @@ function cambiarEstadoU(boton){
             datatype: "JSON",
             success: function (respuesta) {
                 alert(respuesta);
+                location.reload();
             }
         });
     } else {

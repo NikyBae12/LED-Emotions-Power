@@ -26,6 +26,7 @@ header{
     height: 100px;
     position: fixed;
     z-index: 100;
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 .contenedor__header{

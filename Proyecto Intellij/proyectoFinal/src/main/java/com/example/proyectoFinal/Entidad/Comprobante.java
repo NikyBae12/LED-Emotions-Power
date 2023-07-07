@@ -4,7 +4,9 @@ package com.example.proyectoFinal.Entidad;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name = "Comprobante")
@@ -19,11 +21,11 @@ public class Comprobante {
 
     @PrePersist
     public void fecha_hoy(){
-        this.fechaActu = new Date();
+        this.fechaActu = java.sql.Date.valueOf(LocalDate.now());
     }
 
-    @Column(nullable = false)
-    private int factura;
+    @Column()
+    private String factura;
 
     @Column(nullable = false)
     private int valor;
@@ -33,7 +35,7 @@ public class Comprobante {
     @JsonIgnore
     private Usuario usuario;
 
-    public Comprobante(Integer idComprobante, Date fechaActu, int factura, int valor, Usuario usuario) {
+    public Comprobante(Integer idComprobante, Date fechaActu, String factura, int valor, Usuario usuario) {
         this.idComprobante = idComprobante;
         this.fechaActu = fechaActu;
         this.factura = factura;
@@ -60,11 +62,11 @@ public class Comprobante {
         this.fechaActu = fechaActu;
     }
 
-    public int getFactura() {
+    public String getFactura() {
         return factura;
     }
 
-    public void setFactura(int factura) {
+    public void setFactura(String factura) {
         this.factura = factura;
     }
 

@@ -8,14 +8,23 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+
 body{
-    margin-left: 80px;
-    margin-top: 80px;
-    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    padding-left: 80px;
+    padding-top: 80px;
+    transition: padding-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 main{
-    padding: 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1 {
+  margin-top: 2%;
 }
 
 
@@ -27,6 +36,7 @@ header{
     height: 100px;
     background: white;
     display: flex;
+    border-bottom: 1px solid rgb(226, 226, 226);
     align-items: center;
     position: fixed;
     top: 0;
@@ -152,135 +162,60 @@ header{
 }
 
 .btn_inicio:hover{
-      color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   background: var(--purpura_pastel);
 }
 
 
 /*BOTON GESTIONAR MULTIMEDIA*/
 .btn_gestionar{
+  background-color: #fff;
   padding-left: 10px;
   display: block;
-  padding: 8px 20px;
+  padding: 8px 40px;
   border: 2px solid var(--purpura_pastel);
   border-radius: 8px;
   font-weight: 500;
   margin: 0px 20px;
+  height: 45px;
   
 }
 
 .btn_gestionar:hover{
-      color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   background: var(--purpura_pastel);
 }
 
 
-
-/*MENU DESPLEGABLE*/
-
-.icon__menu{
-    width: 50px;
-    height: 200%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(10px);
+.dropdown {
+  background-color: #ffffff;
+  padding-left: 10px;
+  display: block;
+  border-radius: 8px;
+  font-weight: 500;
+  margin: 0px 20px;
 }
-
-.icon__menu i{
-    font-size: 20px;
-    cursor: pointer;
-    position: absolute;
+.dropdown-content {
+  
+  display: none;
+  position: absolute;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
-
-.menu__side{
-    width: 80px;
-    height: 100%;
-    background: #1783db;
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: white;
-    font-size: 18px;
-    z-index: 300;
-    overflow: hidden;
-    overflow-y: scroll;
-    border-right: 20px solid #2b7cbe9a;
-    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+.dropdown:hover .dropdown-content {
+  display: block;
 }
+.dropdown-content a {
 
-/*Ocultar scroll para chrome, safari y opera*/
-.menu__side::-webkit-scrollbar{
-    display: none;
+  display: block;
+  color: #000000;
+  background-color: white;
+  padding: 5px;
+  text-decoration: none;
 }
-
-/*Ocultar scroll para IE, Edge y Firefox*/
-.menu__side{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-
-.name__page{
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.name__page i{
-    width: 20px;
-    margin-right: 20px;
-}
-
-.options__menu{
-    padding: 20px 30px;
-    position: absolute;
-    top: 80px;
-}
-
-.options__menu a{
-    color: #ffffffb2;
-    cursor: default;
-    display: block;
-    position: relative;
-    transition: color 300ms;
-}
-
-.options__menu a:hover{
-    color: white;
-}
-
-.options__menu .option{
-    padding: 20px 0px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.options__menu .option i{
-    width: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-.options__menu .option h4{
-    font-weight: 300;
-    cursor: pointer;
-}
-
-a.selected{
-    color: #fff;
-}
-
-.selected:before{
-    content: '';
-    width: 3px;
-    height: 80%;
-    background: white;
-    position: absolute;
-    top: 10%;
-    left: -30px;
+.dropdown-content a:hover {
+  color: #FFFFFF;
+  background-color: rgb(117, 5, 117);
 }
 
 
@@ -429,21 +364,22 @@ a.selected{
 /*Clases para usar en JavaScript*/
 
 .body_move{
-    margin-left: 250px;
+  padding-left: 250px;
 }
 
 .menu__side_move{
-    width: 250px;
+  width: 250px;
 }
 
 
 @media screen and (max-width: 760px){
-    .body_move{
-        margin-left: 0px;
-    }
+  .body_move{
+      margin-left: 0px;
+  }
 
-    .menu__side_move{
-        width: 80px;
-        left: -80px;
-    }
+
+  .menu__side_move{
+      width: 80px;
+      left: -80px;
+  }
 }

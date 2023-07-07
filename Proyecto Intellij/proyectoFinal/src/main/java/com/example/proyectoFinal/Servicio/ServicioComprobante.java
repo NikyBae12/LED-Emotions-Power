@@ -2,22 +2,27 @@ package com.example.proyectoFinal.Servicio;
 
 
 import com.example.proyectoFinal.Entidad.Comprobante;
+import com.example.proyectoFinal.Entidad.Usuario;
 import com.example.proyectoFinal.Repositorio.RepositorioComprobante;
+import com.example.proyectoFinal.Repositorio.RepositorioUsuario;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ServicioComprobante {
     private RepositorioComprobante respo_comp;
+    private RepositorioUsuario repoUsuario;
 
-    public ServicioComprobante(RepositorioComprobante respo_comp) {
+    public ServicioComprobante(RepositorioComprobante respo_comp, RepositorioUsuario repoUsuario) {
         this.respo_comp = respo_comp;
+        this.repoUsuario = repoUsuario;
     }
 
-    public ArrayList<Comprobante> listarComprobantes(){
+    public List<Object[]> listarComprobantes(){
 
-        return (ArrayList<Comprobante>) respo_comp.findAll();
+        return respo_comp.FindComprobantes();
     }
 
 
@@ -27,13 +32,22 @@ public class ServicioComprobante {
     }
 
 
-    public String agregarComprobante(Comprobante comprobante){
-        if (respo_comp.findById(comprobante.getIdComprobante()).isPresent()){
-            return "El comprobante ya se encuentra registrado.";
-        }else {
+    public String agregarComprobante(Comprobante comprobante, String idUsuario){
+
+        if (repoUsuario.findById(idUsuario).isPresent()){
+
+            Usuario user = repoUsuario.findByIdUsuario(idUsuario);
+            comprobante.setUsuario(user);
+
             respo_comp.save(comprobante);
-            return "Coprobante registrado exitosamente.";
+
+            return "Comprobante registrado con éxito.";
+
+        } else {
+            return "El Comprobante no se registro.";
+
         }
+
     }
 
 
