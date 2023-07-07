@@ -218,3 +218,56 @@ function validarRegistroResponse(response){
     } 
 
 }
+
+
+/* FUNCIONES PARA CREAR EL COMPROBANTE AL ACTUALIZAR EL USUARIO */
+let valores = {
+
+    'Invitado': 0,
+    'Suscrito': 15000,
+    'MonthLED': 0,
+    'Premium': 8000,
+    'LEDUser': 0
+
+}
+
+function crearComprobante(tipoUser){
+
+    let comprobante = {
+        valor: null
+    }
+
+    if (tipoUser != ""){
+        Object.keys(valores).forEach(function (clave) {
+            let valorS = valores[clave];
+    
+            if (clave == tipoUser) {
+                comprobante.valor = valorS;
+            }
+    
+        });
+    }else {
+        document.querySelector('#valor').value = '';
+    }
+
+}
+
+function agregarComprobante(comprobante, documento){
+
+    let datosEnvio = JSON.stringify(comprobante);
+
+    $.ajax({
+        url: "http://127.0.0.1:8080/agregarComprobante/" + documento,
+        type :"POST",
+        data: datosEnvio,
+        contentType: "application/JSON",
+        async: false,
+        datatype: JSON,
+        success: function(respuesta) {
+            alert(respuesta);
+            location.reload();
+        }
+
+    })
+
+}

@@ -95,16 +95,19 @@ function listarTabla(){
 
 
             for (let i = 0; i < respuesta.length; i++) {
-                tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
-                '</td><td>' + respuesta[i].nombres +
-                '</td><td>' + respuesta[i].email + 
-                '</td><td>' + respuesta[i].contraseña + 
-                '</td><td>' + respuesta[i].fechaN + 
-                '</td><td>' + respuesta[i].codVerif +
-                '</td><td>' + respuesta[i].estadoCuenta + 
-                '</td><td> <input type="button" class="btnListar" id="' + respuesta[i].idUsuario + '" value="Listar">' + 
-                '</td><td>' + respuesta[i].imgPerfil + 
-                '</td></tr>';
+                if (respuesta[i].estadoCuenta != "Restringido"){
+                    tablaUsuarios.innerHTML += '<tr><td>' + respuesta[i].idUsuario +
+                    '</td><td>' + respuesta[i].nombres +
+                    '</td><td>' + respuesta[i].email + 
+                    '</td><td>' + respuesta[i].contraseña + 
+                    '</td><td>' + respuesta[i].fechaN + 
+                    '</td><td>' + respuesta[i].codVerif +
+                    '</td><td>' + respuesta[i].estadoCuenta + 
+                    '</td><td> <input type="button" class="btnListar" id="' + respuesta[i].idUsuario + '" value="Actualizar">' + 
+                    '</td><td>' + respuesta[i].imgPerfil + 
+                    '</td></tr>';
+
+                }
                 
             }
             listarUsuarioForm();
@@ -286,5 +289,61 @@ function validarRegistroResponse(response){
         
         location.reload();
     } 
+
+}
+
+
+
+/* FUNCIONES PARA CREAR EL COMPROBANTE AL ACTUALIZAR EL USUARIO */
+
+
+let valores = {
+
+    'Invitado': 0,
+    'Suscrito': 15000,
+    'MonthLED': 0,
+    'Premium': 8000,
+    'LEDUser': 0
+
+}
+
+function crearComprobante(tipoUser){
+
+    let comprobante = {
+        valor: null
+    }
+
+    if (tipoUser != ""){
+        Object.keys(valores).forEach(function (clave) {
+            let valorS = valores[clave];
+    
+            if (clave == tipoUser) {
+                comprobante.valor = valorS;
+            }
+    
+        });
+    }else {
+        document.querySelector('#valor').value = '';
+    }
+
+}
+
+function agregarComprobante(comprobante, documento){
+
+    let datosEnvio = JSON.stringify(comprobante);
+
+    $.ajax({
+        url: "http://127.0.0.1:8080/agregarComprobante/" + documento,
+        type :"POST",
+        data: datosEnvio,
+        contentType: "application/JSON",
+        async: false,
+        datatype: JSON,
+        success: function(respuesta) {
+            alert(respuesta);
+            location.reload();
+        }
+
+    })
 
 }
